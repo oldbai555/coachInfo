@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarTicketTabDao implements ICarTicketTabDao {
+public class CarTicketTabDaoImpl implements ICarTicketTabDao {
 
     Connection connection = null;
     PreparedStatement statement = null;
