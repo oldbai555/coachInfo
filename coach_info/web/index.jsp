@@ -142,12 +142,12 @@
 
     <div class="row">
       <div id="pageControl">
-        <div class="pageControl_item ">每页<font id="dataPrePage">${dataPrePage }</font>条数据</div>
-        <div class="pageControl_item " id="last">最后一页</div>
-        <div class="pageControl_item " id="next">下一页</div>
-        <div class="pageControl_item "><font id="currentPage">${currentPage }</font>/<font id="pages">${pages }</font></div>
-        <div class="pageControl_item " id="previous">上一页</div>
         <div class="pageControl_item " id="first">首页</div>
+        <div class="pageControl_item " id="previous">上一页</div>
+        <div class="pageControl_item "><font id="currentPage">${sessionScope.currentPage }</font>/<font id="pages">${sessionScope.pages }</font></div>
+        <div class="pageControl_item " id="next">下一页</div>
+        <div class="pageControl_item ">每页<font id="dataPrePage">${sessionScope.dataPrePage }</font>条数据</div>
+        <div class="pageControl_item " id="last">最后一页</div>
       </div>
     </div>
 
