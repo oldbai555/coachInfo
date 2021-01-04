@@ -1,0 +1,26 @@
+*{
+	font-family: Microsoft YaHei;
+}
+
+#pageControl{
+	width: 100%;
+	height: auto;
+	/*position: relative;*/
+	/*position:absolute;*/
+	/*bottom:10px;*/
+	font-size: 13px;
+	/*text-align: center;*/
+	/*border: 1px solid rebeccapurple;*/
+}
+.pageControl_item{
+	/*width:60px;*/
+	height: 30px;
+	display: inline-block;
+	/*margin: auto;*/
+	text-align: center;
+	line-height: 30px;
+	/*float: right;*/
+	/*border: 1px solid rebeccapurple;*/
+	margin-right: 30px;
+	cursor: pointer;
+}
