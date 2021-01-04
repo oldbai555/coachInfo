@@ -68,8 +68,14 @@ public class Main {
 //        System.out.println(new CarTicketInfoDaoImpl().findByCarId(1));
 //        System.out.println(new CarTicketInfoDaoImpl().findAll());
 //        System.out.println(new CarTicketInfoDaoImpl().findAllPage(0, 6));
-
-//        System.out.println(new CarTicketTabDao().findById(1));
+//          车票表
+//        System.out.println(new CarTicketInfoDaoImpl().findById(1));
+//        System.out.println(new CarTicketInfoDaoImpl().findAll());
+//        System.out.println(new CarTicketInfoDaoImpl().findAllPage(0, 6));
+//        购票表
+//        System.out.println(new SellTicketInfoDaoImpl().findById(1));
+//        System.out.println(new SellTicketInfoDaoImpl().findAll());
+//        System.out.println(new SellTicketInfoDaoImpl().findAllPage(0, 6));
     }
 
 }
