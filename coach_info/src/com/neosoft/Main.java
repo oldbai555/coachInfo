@@ -4,7 +4,6 @@ import com.neosoft.dao.impl.*;
 import com.neosoft.entity.CarInfo;
 import com.neosoft.entity.CarStartTab;
 import com.neosoft.entity.CarType;
-import javafx.css.StyleableIntegerProperty;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -70,7 +69,7 @@ public class Main {
 //        System.out.println(new CarTicketInfoDaoImpl().findAll());
 //        System.out.println(new CarTicketInfoDaoImpl().findAllPage(0, 6));
 
-        System.out.println(new CarTicketTabDao().findById(1));
+//        System.out.println(new CarTicketTabDao().findById(1));
     }
 
 }
