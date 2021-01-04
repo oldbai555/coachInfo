@@ -4,6 +4,7 @@ import com.neosoft.dao.impl.*;
 import com.neosoft.entity.CarInfo;
 import com.neosoft.entity.CarStartTab;
 import com.neosoft.entity.CarType;
+import com.neosoft.util.JdbcUtil;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -73,9 +74,10 @@ public class Main {
 //        System.out.println(new CarTicketInfoDaoImpl().findAll());
 //        System.out.println(new CarTicketInfoDaoImpl().findAllPage(0, 6));
 //        购票表
-//        System.out.println(new SellTicketInfoDaoImpl().findById(1));
-//        System.out.println(new SellTicketInfoDaoImpl().findAll());
-//        System.out.println(new SellTicketInfoDaoImpl().findAllPage(0, 6));
+        System.out.println(new SellTicketInfoDaoImpl().findById(1));
+        System.out.println(new SellTicketInfoDaoImpl().findAll());
+        System.out.println(new SellTicketInfoDaoImpl().findAllPage(0, 6));
+//        System.out.println(JdbcUtil.getConnection());
     }
 
 }
