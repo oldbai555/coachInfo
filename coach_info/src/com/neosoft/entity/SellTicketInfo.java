@@ -3,19 +3,20 @@ package com.neosoft.entity;
 //购票表
 public class SellTicketInfo {
     int id;
-    CarTicketInfo ticketInfo;
+    int ticketInfoId;
+    //    CarTicketInfo ticketInfo;
     String peopleName;
     String peopleIdCard;
 
-    public SellTicketInfo(int id, CarTicketInfo ticketInfo, String peopleName, String peopleIdCard) {
+    public SellTicketInfo(int id, int ticketInfoId, String peopleName, String peopleIdCard) {
         this.id = id;
-        this.ticketInfo = ticketInfo;
+        this.ticketInfoId = ticketInfoId;
         this.peopleName = peopleName;
         this.peopleIdCard = peopleIdCard;
     }
 
-    public SellTicketInfo(CarTicketInfo ticketInfo, String peopleName, String peopleIdCard) {
-        this.ticketInfo = ticketInfo;
+    public SellTicketInfo(int ticketInfoId, String peopleName, String peopleIdCard) {
+        this.ticketInfoId = ticketInfoId;
         this.peopleName = peopleName;
         this.peopleIdCard = peopleIdCard;
     }
@@ -27,7 +28,7 @@ public class SellTicketInfo {
     public String toString() {
         return "SellTicketInfo{" +
                 "id=" + id +
-                ", ticketInfo=" + ticketInfo +
+                ", ticketInfoId=" + ticketInfoId +
                 ", peopleName='" + peopleName + '\'' +
                 ", peopleIdCard='" + peopleIdCard + '\'' +
                 '}';
@@ -41,12 +42,12 @@ public class SellTicketInfo {
         this.id = id;
     }
 
-    public CarTicketInfo getTicketInfo() {
-        return ticketInfo;
+    public int getTicketInfoId() {
+        return ticketInfoId;
     }
 
-    public void setTicketInfo(CarTicketInfo ticketInfo) {
-        this.ticketInfo = ticketInfo;
+    public void setTicketInfoId(int ticketInfoId) {
+        this.ticketInfoId = ticketInfoId;
     }
 
     public String getPeopleName() {

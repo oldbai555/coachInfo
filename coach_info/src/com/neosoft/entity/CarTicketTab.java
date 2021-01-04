@@ -3,21 +3,20 @@ package com.neosoft.entity;
 //车票表
 public class CarTicketTab {
     int id;
-//    int ticketInfoId;
-
-    CarTicketInfo ticketInfo;
+    int ticketInfoId;
+//    CarTicketInfo ticketInfo;
     int ticketNum;
     int ticketSum;
 
-    public CarTicketTab(int id, CarTicketInfo ticketInfo, int ticketNum, int ticketSum) {
+    public CarTicketTab(int id, int ticketInfoId, int ticketNum, int ticketSum) {
         this.id = id;
-        this.ticketInfo = ticketInfo;
+        this.ticketInfoId = ticketInfoId;
         this.ticketNum = ticketNum;
         this.ticketSum = ticketSum;
     }
 
-    public CarTicketTab(CarTicketInfo ticketInfo, int ticketNum, int ticketSum) {
-        this.ticketInfo = ticketInfo;
+    public CarTicketTab(int ticketInfoId, int ticketNum, int ticketSum) {
+        this.ticketInfoId = ticketInfoId;
         this.ticketNum = ticketNum;
         this.ticketSum = ticketSum;
     }
@@ -29,13 +28,14 @@ public class CarTicketTab {
     public String toString() {
         return "CarTicketTab{" +
                 "id=" + id +
-                ", ticketInfo=" + ticketInfo +
+                ", ticketInfoId=" + ticketInfoId +
                 ", ticketNum=" + ticketNum +
                 ", ticketSum=" + ticketSum +
                 '}';
     }
 
     public int getId() {
+
         return id;
     }
 
@@ -43,12 +43,12 @@ public class CarTicketTab {
         this.id = id;
     }
 
-    public CarTicketInfo getTicketInfo() {
-        return ticketInfo;
+    public int getTicketInfoId() {
+        return ticketInfoId;
     }
 
-    public void setTicketInfo(CarTicketInfo ticketInfo) {
-        this.ticketInfo = ticketInfo;
+    public void setTicketInfoId(int ticketInfoId) {
+        this.ticketInfoId = ticketInfoId;
     }
 
     public int getTicketNum() {

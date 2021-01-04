@@ -2,20 +2,17 @@ package com.neosoft.entity;
 //车票信息表
 public class CarTicketInfo {
     int id;
-    CarType carType;
+//    CarType carType;
     CarInfo carInfo;
     String ticketName;
 
-
-    public CarTicketInfo(int id, CarType carType, CarInfo carInfo, String ticketName) {
+    public CarTicketInfo(int id, CarInfo carInfo, String ticketName) {
         this.id = id;
-        this.carType = carType;
         this.carInfo = carInfo;
         this.ticketName = ticketName;
     }
 
-    public CarTicketInfo(CarType carType, CarInfo carInfo, String ticketName) {
-        this.carType = carType;
+    public CarTicketInfo(CarInfo carInfo, String ticketName) {
         this.carInfo = carInfo;
         this.ticketName = ticketName;
     }
@@ -27,7 +24,6 @@ public class CarTicketInfo {
     public String toString() {
         return "CarTicketInfo{" +
                 "id=" + id +
-                ", carType=" + carType +
                 ", carInfo=" + carInfo +
                 ", ticketName='" + ticketName + '\'' +
                 '}';
@@ -39,14 +35,6 @@ public class CarTicketInfo {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public CarType getCarType() {
-        return carType;
-    }
-
-    public void setCarType(CarType carType) {
-        this.carType = carType;
     }
 
     public CarInfo getCarInfo() {
