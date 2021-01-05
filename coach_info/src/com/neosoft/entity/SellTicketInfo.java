@@ -4,7 +4,7 @@ package com.neosoft.entity;
 public class SellTicketInfo {
     int id;
     int ticketInfoId;
-    //    CarTicketInfo ticketInfo;
+    CarTicketInfo ticketInfo;
     String peopleName;
     String peopleIdCard;
 
@@ -29,9 +29,18 @@ public class SellTicketInfo {
         return "SellTicketInfo{" +
                 "id=" + id +
                 ", ticketInfoId=" + ticketInfoId +
+                ", ticketInfo=" + ticketInfo +
                 ", peopleName='" + peopleName + '\'' +
                 ", peopleIdCard='" + peopleIdCard + '\'' +
                 '}';
+    }
+
+    public void setTicketInfo(CarTicketInfo ticketInfo) {
+        this.ticketInfo = ticketInfo;
+    }
+
+    public CarTicketInfo getTicketInfo() {
+        return ticketInfo;
     }
 
     public int getId() {

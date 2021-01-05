@@ -4,7 +4,7 @@ package com.neosoft.entity;
 public class CarTicketTab {
     int id;
     int ticketInfoId;
-//    CarTicketInfo ticketInfo;
+    CarTicketInfo ticketInfo;
     int ticketNum;
     int ticketSum;
 
@@ -29,16 +29,24 @@ public class CarTicketTab {
         return "CarTicketTab{" +
                 "id=" + id +
                 ", ticketInfoId=" + ticketInfoId +
+                ", ticketInfo=" + ticketInfo +
                 ", ticketNum=" + ticketNum +
                 ", ticketSum=" + ticketSum +
                 '}';
+    }
+
+    public CarTicketInfo getTicketInfo() {
+        return ticketInfo;
+    }
+
+    public void setTicketInfo(CarTicketInfo ticketInfo) {
+        this.ticketInfo = ticketInfo;
     }
 
     public int getId() {
 
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }

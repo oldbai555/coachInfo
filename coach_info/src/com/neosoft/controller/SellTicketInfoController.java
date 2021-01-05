@@ -1,9 +1,11 @@
 package com.neosoft.controller;
 
-import com.neosoft.dao.impl.CarTypeDaoImpl;
-import com.neosoft.entity.CarType;
-import com.neosoft.service.CarTypeService;
-import com.neosoft.service.impl.CarTypeServiceImpl;
+import com.neosoft.dao.impl.CarTicketInfoDaoImpl;
+import com.neosoft.entity.CarStartTab;
+import com.neosoft.entity.CarTicketInfo;
+import com.neosoft.entity.SellTicketInfo;
+import com.neosoft.service.SellTicketInfoService;
+import com.neosoft.service.impl.SellTicketInfoServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +16,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/carType")
-public class CarTypeController extends HttpServlet {
-    private CarTypeService service = new CarTypeServiceImpl();
+@WebServlet("/sellTicketInfo")
+public class SellTicketInfoController extends HttpServlet {
+
+    private SellTicketInfoService service = new SellTicketInfoServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,15 +32,17 @@ public class CarTypeController extends HttpServlet {
             case "findAll":
                 String pageStr = req.getParameter("page");
                 Integer page = Integer.parseInt(pageStr);
-                List<CarType> list = service.findAllPage(page);
+                List<SellTicketInfo> list = service.findAllPage(page);
+                for (SellTicketInfo info : list){
+                    info.setTicketInfo(new CarTicketInfoDaoImpl().findById(info.getTicketInfoId()));
+                }
                 session.setAttribute("list", list);
                 session.setAttribute("dataPrePage", 10);
                 session.setAttribute("currentPage", page);
                 session.setAttribute("pages", service.getPages());
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("sellTicketInfo.jsp");
                 break;
         }
-
     }
 
     @Override

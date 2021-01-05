@@ -1,16 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: 老白
-  Date: 2021/1/4
-  Time: 9:38
+  Date: 2021/1/5
+  Time: 9:14
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 <head>
-    <title>首页</title>
+    <title>车票页(已售多少还剩多少)</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="./css/main.css"/>
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
@@ -35,7 +34,7 @@
                     return;
                 }
                 page++;
-                location.href = "/carType?page=" + page;
+                location.href = "/carTicketTab?page=" + page;
             })
 
             $("#previous").click(function () {
@@ -44,33 +43,34 @@
                     return;
                 }
                 page--;
-                location.href = "/carType?page=" + page;
+                location.href = "/carTicketTab?page=" + page;
             })
 
             $("#first").click(function () {
-                location.href = "/carType?page=1";
+                location.href = "/carTicketTab?page=1";
             })
 
             $("#last").click(function () {
                 var pages = parseInt($("#pages").html());
-                location.href = "/carType?page=" + pages;
+                location.href = "/carTicketTab?page=" + pages;
             })
         })
     </script>
 </head>
 <body>
-
+<%--最外层开始--%>
 <div class=" .container-fluid">
-
+    <%--巨幕开始--%>
     <div class="jumbotron carbg">
         <h1 class="display-4">Neusoft车站管理系统</h1>
         <p class="lead">javaweb项目实战</p>
         <hr class="my-4">
         <p>小组成员：叶秋妤，刘真成，张建军，郭佳顺，陆昌豪</p>
     </div>
-
+    <%--巨幕结束--%>
+    <%--主体开始--%>
     <div class="container">
-
+        <%--首页开始--%>
         <div class="row bg-light rounded">
             <div class="col-sm-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -118,9 +118,53 @@
                 </nav>
             </div>
         </div>
+        <%--首页结束--%>
+        <%--主体开始--%>
+        <div class="row border rounded">
+
+            <table class="table table-hover ">
+                <thead>
+                <tr>
+                    <th>汽车名称</th>
+                    <th>车票名</th>
+                    <th>总数</th>
+                    <th>已售</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${sessionScope.list}" var="list">
+                    <tr>
+                        <td>${list.ticketInfo.carInfo.carType.carName}</td>
+                        <td>${list.ticketInfo.ticketName}</td>
+                        <td>${list.ticketNum}</td>
+                        <td>${list.ticketSum}</td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <%--主体结束--%>
+        <%--分页开始--%>
+        <div class="row">
+            <div id="pageControl">
+                <div class="pageControl_item " id="first">首页</div>
+                <div class="pageControl_item " id="previous">上一页</div>
+                <div class="pageControl_item "><font id="currentPage">${sessionScope.currentPage }</font>/<font
+                        id="pages">${sessionScope.pages }</font></div>
+                <div class="pageControl_item " id="next">下一页</div>
+                <div class="pageControl_item ">每页<font id="dataPrePage">${sessionScope.dataPrePage }</font>条数据</div>
+                <div class="pageControl_item " id="last">最后一页</div>
+            </div>
+        </div>
+        <%--分页结束--%>
 
     </div>
-
+    <%--主体结束--%>
 </div>
+<%--最外层结束--%>
+
 </body>
 </html>

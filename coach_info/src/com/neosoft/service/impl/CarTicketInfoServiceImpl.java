@@ -1,25 +1,17 @@
 package com.neosoft.service.impl;
 
-import com.neosoft.service.CarStartTabService;
+import com.neosoft.dao.impl.CarTicketInfoDaoImpl;
 import com.neosoft.entity.CarStartTab;
-import com.neosoft.dao.ICarStartTabDao;
-import com.neosoft.dao.impl.CarStartTabDaoImpl;
+import com.neosoft.entity.CarTicketInfo;
+import com.neosoft.service.CarTicketInfoService;
+import com.neosoft.service.CarTicketTabService;
 
 import java.util.List;
 
-public class CarStartTabServiceImpl implements CarStartTabService{
+public class CarTicketInfoServiceImpl implements CarTicketInfoService {
 
     private final int LIMIT = 10;
-    private ICarStartTabDao info = new CarStartTabDaoImpl();
-
-
-    @Override
-    public List<CarStartTab> findAll() {
-
-        List<CarStartTab> records = info.findAll();
-        System.out.println(records);
-        return records;
-    }
+    private CarTicketInfoDaoImpl info = new CarTicketInfoDaoImpl();
 
     @Override
     public int getPages() {
@@ -34,8 +26,13 @@ public class CarStartTabServiceImpl implements CarStartTabService{
     }
 
     @Override
-    public List<CarStartTab> findAllPage(int page) {
+    public List<CarTicketInfo> findAllPage(int page) {
         int index = (page - 1) * LIMIT;
         return info.findAllPage(index,LIMIT);
+    }
+
+    @Override
+    public CarTicketInfo findById(int Id) {
+        return info.findById(Id);
     }
 }

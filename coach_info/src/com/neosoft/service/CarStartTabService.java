@@ -6,4 +6,9 @@ import java.util.List;
 
 public interface CarStartTabService {
     List<CarStartTab> findAll();
+
+    int getPages();
+
+    List<CarStartTab> findAllPage(int page);
+
 }

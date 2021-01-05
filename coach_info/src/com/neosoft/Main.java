@@ -56,7 +56,7 @@ public class Main {
 //        System.out.println(new CarStartTabDaoImpl().count());
 //        System.out.println(new CarStartTabDaoImpl().deleteById(8));
 //        发车信息表
-        System.out.println(new CarInfoDaoImpl().findById(1));
+//        System.out.println(new CarInfoDaoImpl().findById(1));
 //        System.out.println(new CarInfoDaoImpl().findByCarId(1));
 //        System.out.println(new CarInfoDaoImpl().findAll());
 //        System.out.println(new CarInfoDaoImpl().findAllPage(0,6));
@@ -67,12 +67,12 @@ public class Main {
 //        System.out.println(new CarInfoDaoImpl().update(carInfo));
 //        System.out.println(new CarInfoDaoImpl().deleteById(17));
 //        车票信息表
-        System.out.println(new CarTicketInfoDaoImpl().findById(1));
+//        System.out.println(new CarTicketInfoDaoImpl().findById(1));
 //        System.out.println(new CarTicketInfoDaoImpl().findByCarId(1));
 //        System.out.println(new CarTicketInfoDaoImpl().findAll());
 //        System.out.println(new CarTicketInfoDaoImpl().findAllPage(0, 6));
-
-        System.out.println(new CarTicketTabDaoImpl().findById(1));
+        System.out.println(new SellTicketInfoDaoImpl().findAllPage(0,6));
+//        System.out.println(new CarTicketTabDaoImpl().findById(1));
 //        CarTicketTabService obj = new CarTicketTabServiceImpl();
 //        obj.findAll();
     }
