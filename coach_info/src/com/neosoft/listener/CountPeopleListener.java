@@ -1,5 +1,7 @@
 package com.neosoft.listener;
 
+import com.neosoft.util.FlowCount;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -19,8 +21,10 @@ public class CountPeopleListener implements ServletContextListener, HttpSessionL
      */
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        int num = FlowCount.findFlow();
+        num = num - 4 ;
         context = sce.getServletContext();
-        context.setAttribute("countPeo", -4);
+        context.setAttribute("countPeo", num);
     }
 
     /**
@@ -30,7 +34,8 @@ public class CountPeopleListener implements ServletContextListener, HttpSessionL
      */
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-
+        int num = (int) context.getAttribute("countPeo");
+        FlowCount.addFlow(num);
     }
 
     /**
@@ -46,12 +51,11 @@ public class CountPeopleListener implements ServletContextListener, HttpSessionL
     }
 
     /**
-     * session创建
+     * session销毁
      *
      * @param se
      */
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-
     }
 }
