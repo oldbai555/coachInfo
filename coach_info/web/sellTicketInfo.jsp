@@ -106,7 +106,7 @@
                                 <a class="nav-link text-secondary" href="/carStartTab?page=1">发车记录表 <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link disabled" href="#">尊敬的xxx用户 <span
+                                <a class="nav-link disabled" href="#">尊敬的${admin.username}用户<span
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">

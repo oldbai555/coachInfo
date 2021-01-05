@@ -26,11 +26,11 @@
     <h1>欢迎登陆</h1>
     <div class="item">
         <div class="icon"><img src="img/icon1.png"/></div>
-        <div class="txt"><input name="name" id="name" type="text" placeholder="请输入您的用户名"/></div>
+        <div class="txt"><input name="name" id="name" type="text" placeholder="请输入您的用户名" value="admin"/></div>
     </div>
     <div class="item">
         <div class="icon"><img src="img/icon2.png"/></div>
-        <div class="txt"><input name="pwd" id="pwd" type="password" placeholder="请输入您的密码"/></div>
+        <div class="txt"><input name="pwd" id="pwd" type="password" placeholder="请输入您的密码" value="123456"/></div>
     </div>
     <div class="item_2">
         <input name="" type="checkbox" value=""/>
