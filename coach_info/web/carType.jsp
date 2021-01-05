@@ -59,7 +59,7 @@
 </head>
 <body>
 <%--最外层开始--%>
-<div class=" .container-fluid">
+<div class=" .container-fluid ">
     <%--巨幕开始--%>
     <div class="jumbotron carbg">
         <h1 class="display-4">Neusoft车站管理系统</h1>
@@ -69,7 +69,7 @@
     </div>
     <%--巨幕结束--%>
     <%--首页开始--%>
-    <div class="container">
+    <div class="container  mb-5">
         <div class="row bg-light rounded">
             <div class="col-sm-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -218,6 +218,7 @@
 
     </div>
     <%--首页结束--%>
+        <div class="fixed-bottom text-dark bg-light">桂公网安备 000000000001号</div>
 
 </div>
 

@@ -71,7 +71,7 @@
     </div>
     <%--巨幕结束--%>
     <%--主体开始--%>
-    <div class="container">
+    <div class="container  mb-5">
         <%--首页开始--%>
         <div class="row bg-light rounded">
             <div class="col-sm-12">
@@ -175,6 +175,7 @@
 
     </div>
     <%--主体结束--%>
+        <div class="fixed-bottom text-dark bg-light">桂公网安备 000000000001号</div>
 </div>
 <%--最外层结束--%>
 
