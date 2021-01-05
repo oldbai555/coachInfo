@@ -22,14 +22,14 @@ public class CountPeopleListener implements ServletContextListener, HttpSessionL
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         int num = FlowCount.findFlow();
-        num = num - 4 ;
+        num = num - 5 ;
         context = sce.getServletContext();
         context.setAttribute("countPeo", num);
     }
 
     /**
      * 销毁的监听
-     *
+     *  开发环境下不能正常销毁它
      * @param sce
      */
     @Override
@@ -57,5 +57,7 @@ public class CountPeopleListener implements ServletContextListener, HttpSessionL
      */
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
+//        int num = (int) context.getAttribute("countPeo");
+//        FlowCount.addFlow(num);
     }
 }

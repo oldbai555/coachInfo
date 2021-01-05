@@ -32,7 +32,7 @@ public class FlowCount {
     public static int addFlow(int num) {
         try {
             connection = JdbcUtil.getConnection();
-            sqlStr = "update car_info SET flow_count = ? where id = 1 ";
+            sqlStr = "update flow_count SET flow = ? where id = 1 ";
             statement = connection.prepareStatement(sqlStr);
             statement.setInt(1,num);
             return statement.executeUpdate();

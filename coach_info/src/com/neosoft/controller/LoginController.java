@@ -16,7 +16,7 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().removeAttribute("admin");
+        req.getSession().invalidate();
         resp.sendRedirect("login.jsp");
     }
 
@@ -24,8 +24,6 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("name");
         String pwd = req.getParameter("pwd");
-//        System.out.println(username);
-//        System.out.println(pwd);
         AdminService admin = new AdminServiceImpl();
         Admin admin1 = admin.login(username, pwd);
         if(admin1!=null){
