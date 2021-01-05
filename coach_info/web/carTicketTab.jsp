@@ -109,7 +109,7 @@
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-primary" href="#">退出登录 <span
+                                <a class="nav-link text-primary" href="/login" id="out" onclick="fun()">退出登录 <span
                                         class="sr-only">(current)</span></a>
                             </li>
                         </ul>

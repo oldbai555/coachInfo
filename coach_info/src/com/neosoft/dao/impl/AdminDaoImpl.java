@@ -55,6 +55,7 @@ public class AdminDaoImpl implements IAdminDao {
         }finally {
             JdbcUtil.closeConnection(connection,statement,resultSet);
         }
+        System.out.println(admin);
         return admin;
     }
 
@@ -76,5 +77,22 @@ public class AdminDaoImpl implements IAdminDao {
             JdbcUtil.closeConnection(connection,statement,resultSet);
         }
         return admin;
+    }
+
+    @Override
+    public int insert(String username, String pwd) {
+        try {
+            connection = JdbcUtil.getConnection();
+            sqlStr = "insert into admin(username,password)VALUE(?,?)";
+            statement = connection.prepareStatement(sqlStr);
+            statement.setString(1,username);
+            statement.setString(2,pwd);
+            return statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.closeConnection(connection,statement,resultSet);
+        }
+        return 0;
     }
 }
