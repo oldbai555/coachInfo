@@ -28,4 +28,6 @@ public interface IAdminDao {
      */
     Admin findByUsername(String username);
 
+    int insert(String username,String pwd);
+
 }

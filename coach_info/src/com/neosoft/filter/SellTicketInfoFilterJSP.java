@@ -10,8 +10,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebFilter("/sellTicketInfo")
+@WebFilter("/sellTicketInfo.jsp")
 public class SellTicketInfoFilterJSP implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -25,5 +30,10 @@ public class SellTicketInfoFilterJSP implements Filter {
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }
+    }
+
+    @Override
+    public void destroy() {
+
     }
 }
