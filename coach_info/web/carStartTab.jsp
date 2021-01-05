@@ -101,7 +101,8 @@
                                 <a class="nav-link text-secondary" href="/carType?page=1">车辆信息页 <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/carTicketInfo?page=1">车票信息页 <span class="sr-only">(current)</span></a>
+                                <a class="nav-link text-secondary" href="/carTicketInfo?page=1">车票信息页 <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-secondary" href="/carStartTab?page=1">发车记录表 <span
@@ -169,7 +170,8 @@
 
     </div>
     <%--主体结束--%>
-        <div class="fixed-bottom text-dark bg-light">桂公网安备 000000000001号</div>
+    <div class="fixed-bottom text-dark bg-light">桂公网安备 000000000001号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>网站浏览量：${applicationScope.countPeo}次</span>
+    </div>
 </div>
 <%--最外层结束--%>
 

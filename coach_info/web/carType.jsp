@@ -218,7 +218,8 @@
 
     </div>
     <%--首页结束--%>
-        <div class="fixed-bottom text-dark bg-light">桂公网安备 000000000001号</div>
+    <div class="fixed-bottom text-dark bg-light">桂公网安备 000000000001号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>网站浏览量：${applicationScope.countPeo}次</span>
+    </div>
 
 </div>
 

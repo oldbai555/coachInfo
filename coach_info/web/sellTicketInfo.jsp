@@ -90,7 +90,8 @@
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/carTicketTab?page=1">购票信息页 <span class="sr-only">(current)</span></a>
+                                <a class="nav-link text-secondary" href="/carTicketTab?page=1">购票信息页 <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">购票记录表 <span
@@ -100,10 +101,12 @@
                                 <a class="nav-link text-secondary" href="/carType?page=1">车辆信息页 <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/carTicketInfo?page=1">车票信息页 <span class="sr-only">(current)</span></a>
+                                <a class="nav-link text-secondary" href="/carTicketInfo?page=1">车票信息页 <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-secondary" href="/carStartTab?page=1">发车记录表 <span class="sr-only">(current)</span></a>
+                                <a class="nav-link text-secondary" href="/carStartTab?page=1">发车记录表 <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link disabled" href="#">尊敬的${admin.username}用户<span
@@ -121,54 +124,54 @@
         </div>
         <%--首页结束--%>
 
-            <%--主体开始--%>
-            <div class="row border rounded">
+        <%--主体开始--%>
+        <div class="row border rounded">
 
-                <table class="table table-hover ">
-                    <thead>
+            <table class="table table-hover ">
+                <thead>
+                <tr>
+                    <th>购票人姓名</th>
+                    <th>购票人身份证</th>
+                    <th>车票名称</th>
+                    <th>发车时间</th>
+                    <th>乘坐车辆</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${sessionScope.list}" var="list">
                     <tr>
-                        <th>购票人姓名</th>
-                        <th>购票人身份证</th>
-                        <th>车票名称</th>
-                        <th>发车时间</th>
-                        <th>乘坐车辆</th>
+                        <td>${list.peopleName}</td>
+                        <td>${list.peopleIdCard}</td>
+                        <td>${list.ticketInfo.ticketName}</td>
+                        <td>${list.ticketInfo.carInfo.car_start_time}</td>
+                        <td>${list.ticketInfo.carInfo.carType.carName}</td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${sessionScope.list}" var="list">
-                        <tr>
-                            <td>${list.peopleName}</td>
-                            <td>${list.peopleIdCard}</td>
-                            <td>${list.ticketInfo.ticketName}</td>
-                            <td>${list.ticketInfo.carInfo.car_start_time}</td>
-                            <td>${list.ticketInfo.carInfo.carType.carName}</td>
-                        </tr>
-                    </c:forEach>
+                </c:forEach>
 
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
 
+        </div>
+
+        <%--主体结束--%>
+        <%--分页开始--%>
+        <div class="row">
+            <div id="pageControl">
+                <div class="pageControl_item " id="first">首页</div>
+                <div class="pageControl_item " id="previous">上一页</div>
+                <div class="pageControl_item "><font id="currentPage">${sessionScope.currentPage }</font>/<font
+                        id="pages">${sessionScope.pages }</font></div>
+                <div class="pageControl_item " id="next">下一页</div>
+                <div class="pageControl_item ">每页<font id="dataPrePage">${sessionScope.dataPrePage }</font>条数据</div>
+                <div class="pageControl_item " id="last">最后一页</div>
             </div>
-
-            <%--主体结束--%>
-            <%--分页开始--%>
-            <div class="row">
-                <div id="pageControl">
-                    <div class="pageControl_item " id="first">首页</div>
-                    <div class="pageControl_item " id="previous">上一页</div>
-                    <div class="pageControl_item "><font id="currentPage">${sessionScope.currentPage }</font>/<font
-                            id="pages">${sessionScope.pages }</font></div>
-                    <div class="pageControl_item " id="next">下一页</div>
-                    <div class="pageControl_item ">每页<font id="dataPrePage">${sessionScope.dataPrePage }</font>条数据</div>
-                    <div class="pageControl_item " id="last">最后一页</div>
-                </div>
-            </div>
-            <%--分页结束--%>
+        </div>
+        <%--分页结束--%>
 
     </div>
     <%--主体结束--%>
-        <div class="fixed-bottom text-dark bg-light">
-            桂公网安备 000000000001号</div>
+    <div class="fixed-bottom text-dark bg-light">
+        桂公网安备 000000000001号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>网站浏览量：${applicationScope.countPeo}次</span></div>
 </div>
 <%--最外层结束--%>
 

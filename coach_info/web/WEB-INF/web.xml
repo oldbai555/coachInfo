@@ -32,5 +32,7 @@
         <url-pattern></url-pattern>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-
+    <listener>
+        <listener-class>com.neosoft.listener.CountPeopleListener</listener-class>
+    </listener>
 </web-app>
