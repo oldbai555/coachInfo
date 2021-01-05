@@ -88,7 +88,8 @@
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/carTicketTab?page=1">购票信息页 <span class="sr-only">(current)</span></a>
+                                <a class="nav-link text-secondary" href="/carTicketTab?page=1">购票信息页 <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">购票记录表 <span
@@ -98,10 +99,12 @@
                                 <a class="nav-link text-secondary" href="/carType?page=1">车辆信息页 <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/carTicketInfo?page=1">车票信息页 <span class="sr-only">(current)</span></a>
+                                <a class="nav-link text-secondary" href="/carTicketInfo?page=1">车票信息页 <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-secondary" href="/carStartTab?page=1">发车记录表 <span class="sr-only">(current)</span></a>
+                                <a class="nav-link text-secondary" href="/carStartTab?page=1">发车记录表 <span
+                                        class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link disabled" href="#">尊敬的${admin.username}用户 <span
@@ -130,6 +133,8 @@
                     <th>目的地</th>
                     <th>发车时间</th>
                     <th>预计行驶时间</th>
+                    <th>修改</th>
+                    <th>删除</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -142,6 +147,50 @@
                         <td>${CarInfo.routeEnd}</td>
                         <td>${CarInfo.car_start_time}</td>
                         <td>${CarInfo.probably_time}</td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <a class="text-secondary" data-toggle="modal"
+                               data-target="#exampleModal${CarInfo.id}" href="#">
+                                修改
+                            </a>
+                            <!-- Modal -->
+                            <!-- 模态框外部 -->
+                            <div class="modal fade" id="exampleModal${CarInfo.id}" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <!-- 模态框面板 -->
+                                <div class="modal-dialog" role="document">
+                                    <!-- 模态框中心 -->
+                                    <div class="modal-content">
+                                        <!-- 模态框头部 -->
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">修改信息</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <!-- 头部结束 -->
+                                        <!-- 模态框主体部分 -->
+                                        <div class="modal-body">
+                                                ${CarInfo.id}
+                                        </div>
+                                        <!-- 模态框主体部分结束 -->
+                                        <!-- 脚部开始 -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消
+                                            </button>
+                                            <button type="button" class="btn btn-primary">确定</button>
+                                        </div>
+                                        <!-- 脚部结束 -->
+                                    </div>
+                                    <!-- 模态框中心结束 -->
+                                </div>
+                                <!-- 面板结束 -->
+                            </div>
+                            <!-- 外部结束 -->
+                        </td>
+                        <td>
+                            <a href="#" class="text-danger">删除</a>
+                        </td>
                     </tr>
 
                 </c:forEach>
