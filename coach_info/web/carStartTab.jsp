@@ -54,7 +54,29 @@
                 var pages = parseInt($("#pages").html());
                 location.href = "/carStartTab?page=" + pages;
             })
+
+            $("#licensePlate1").mouseover(function () {
+                $.get("/carType?method=select",
+                    function (data, status) {
+                        var dataJsion = JSON.parse(data)
+                        for (var i = 0; i < dataJsion.length; i++) {
+                            var option = document.createElement("option");
+                            option.innerText = dataJsion[i].licensePlate;
+                            option.value = i;
+                            $("#licensePlate1").append(option)
+                        }
+                    })
+            })
+            $("#licensePlate1").change(function () {
+                $("#licensePlate").val($("#licensePlate1").find("option:selected").text())
+            })
+
+
         })
+
+
+        <%--console.log(${sessionScope.selectCarType})--%>
+
     </script>
 </head>
 <body>
@@ -150,12 +172,22 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    放表单
+                                    <div class="container text-left">
+                                        <h2>发车表</h2>
+                                        <form action="/carStartTab" method="post">
+                                            <input type="hidden" name="method" value="add"/>
+                                            <div class="form-group">
+                                                <p for="car_id" >车牌号:</p>
+                                                <select name="licensePlate1" id="licensePlate1">
+                                                    <option>请选择车辆</option>
+                                                </select>
+                                            </div>
+                                            <input name="licensePlate" type="text" value="" id="licensePlate"/>
+                                            <button type="submit" class="btn btn-primary">提交</button>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary">添加</button>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -211,15 +243,39 @@
                                         <!-- 头部结束 -->
                                         <!-- 模态框主体部分 -->
                                         <div class="modal-body">
-                                                ${list.id}
+                                            <div class="container text-left">
+                                                <h2>发车表</h2>
+                                                <form method="post" action="/carStartTab">
+                                                    <input type="hidden" name="method" value="update"/>
+                                                    <input type="hidden" name="id" value="${list.id}">
+                                                    <input type="hidden" name="peopleNum" value="${list.carType.peopleNum}">
+                                                    <div class="form-group">
+                                                        <p for="car_id" class="text-left">车牌号:</p>
+                                                        <input type="text" class="form-control text-left " id="car_id1"
+                                                               placeholder="1"
+                                                               required="required" value="${list.carType.licensePlate}"
+                                                               name="licensePlate"  disabled="disabled">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <p for="actual_mun" class="text-left">实载人数：</p>
+                                                        <input type="text" class="form-control text-left"
+                                                               id="actual_mun1"
+                                                               placeholder="20" required="required" name="actualNum"
+                                                               value="${list.actualNum}">
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">提交</button>
+                                                </form>
+                                            </div>
                                         </div>
                                         <!-- 模态框主体部分结束 -->
                                         <!-- 脚部开始 -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消
-                                            </button>
-                                            <button type="button" class="btn btn-primary">确定</button>
-                                        </div>
+<%--                                        <div class="modal-footer">--%>
+<%--                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消--%>
+<%--                                            </button>--%>
+<%--                                            <button type="button" class="btn btn-primary">确定</button>--%>
+<%--                                        </div>--%>
                                         <!-- 脚部结束 -->
                                     </div>
                                     <!-- 模态框中心结束 -->
@@ -229,7 +285,7 @@
                             <!-- 外部结束 -->
                         </td>
                         <td>
-                            <a href="#" class="text-danger">删除</a>
+                            <a href="/carStartTab?method=delete&id=${list.id}" class="text-danger">删除</a>
                         </td>
                     </tr>
                 </c:forEach>

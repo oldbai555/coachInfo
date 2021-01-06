@@ -51,6 +51,10 @@ public class CarStartTabController extends HttpServlet {
                 session.setAttribute("pages", service.getPages());
                 resp.sendRedirect("carStartTab.jsp");
                 break;
+            case "delete":
+                service.delete(Integer.parseInt(req.getParameter("id")));
+                resp.sendRedirect("/carStartTab?page=1");
+                break;
         }
     }
 
@@ -71,6 +75,7 @@ public class CarStartTabController extends HttpServlet {
                  * 通过车牌号  licensePlate 获取车辆信息存入
                  * 后台自动获取登记时间
                  */
+                System.out.println(req.getParameter("licensePlate"));
                 CarType carType = dao.findByCard(req.getParameter("licensePlate"));
                 int actualNum = service1
                         .findByInfoId(new CarTicketInfoDaoImpl()
@@ -89,15 +94,18 @@ public class CarStartTabController extends HttpServlet {
                  */
                 carType = dao.findByCard(req.getParameter("licensePlate"));
                 CarStartTab tab = service.findById(Integer.parseInt(req.getParameter("id")));
-                tab.setActualNum(Integer.parseInt(req.getParameter("actualNum")));
-                tab.setStartTime(reDate);
-                service.update(tab);
-                resp.sendRedirect("/carStartTab?page=1");
+                int num = Integer.parseInt(req.getParameter("actualNum"));
+                int sum = Integer.parseInt(req.getParameter("peopleNum"));
+                if (sum < num){
+                    resp.sendRedirect("/carStartTab?page=1");
+                }else {
+                    tab.setActualNum(num);
+                    tab.setStartTime(reDate);
+                    service.update(tab);
+                    resp.sendRedirect("/carStartTab?page=1");
+                }
                 break;
-            case "delete":
-                service.delete(Integer.parseInt(req.getParameter("id")));
-                resp.sendRedirect("/carStartTab?page=1");
-                break;
+
         }
     }
 }

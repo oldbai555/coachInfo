@@ -1,5 +1,6 @@
 package com.neosoft.controller;
 
+import com.google.gson.Gson;
 import com.neosoft.dao.impl.CarTypeDaoImpl;
 import com.neosoft.entity.CarInfo;
 import com.neosoft.entity.CarType;
@@ -52,6 +53,13 @@ public class CarInfoController extends HttpServlet {
                 dao.deleteById(dao.findByCard(req.getParameter("licensePlate")).getId());
                 service.delete(Integer.parseInt(req.getParameter("id")));
                 resp.sendRedirect("carType.jsp");
+                break;
+            case "select":
+                List<CarType> all = dao.findAll();
+                Gson gson = new Gson();
+//                System.out.println(all);
+                session.setAttribute("selectCarType",all);
+                resp.getWriter().write(gson.toJson(all));
                 break;
         }
 
