@@ -95,7 +95,11 @@
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">购票记录表 <span
+                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">购票乘客表 <span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-secondary" href="/carStartTab?page=1">发车记录表 <span
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
@@ -105,14 +109,7 @@
                                 <a class="nav-link text-secondary" href="/carTicketInfo?page=1">车票信息页 <span
                                         class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-secondary" href="/carStartTab?page=1">发车记录表 <span
-                                        class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link disabled" href="#">尊敬的${admin.username}用户<span
-                                        class="sr-only">(current)</span></a>
-                            </li>
+
                             <li class="nav-item ">
                                 <a class="nav-link text-primary" href="/login" id="out" onclick="fun()">退出登录 <span
                                         class="sr-only">(current)</span></a>
@@ -124,6 +121,50 @@
             </div>
         </div>
         <%--首页结束--%>
+        <%--    搜索框--%>
+        <div class="d-flex flex-row-reverse bd-highlight row">
+            <div class="p-2 bd-highlight">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+                </form>
+            </div>
+            <div class="p-2 bd-highlight">
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a class="nav-link disabled" href="#">尊敬的${admin.username}用户<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-secondary my-2 my-sm-0" href="#" data-toggle="modal"
+                           data-target="#exampleModal">添加</a>
+                    </li>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabeladd" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabeladd">添加</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    放表单
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary">添加</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <%--    搜索框--%>
         <%--主体开始--%>
         <div class="row border rounded">
 
@@ -138,6 +179,8 @@
                     <th>发车时间</th>
                     <th>预计行驶时间</th>
                     <th>车票名称</th>
+                    <th>修改</th>
+                    <th>删除</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -151,6 +194,50 @@
                         <td>${list.carInfo.car_start_time}</td>
                         <td>${list.carInfo.probably_time}</td>
                         <td>${list.ticketName}</td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <a class="text-secondary" data-toggle="modal"
+                               data-target="#exampleModal${list.id}" href="#">
+                                修改
+                            </a>
+                            <!-- Modal -->
+                            <!-- 模态框外部 -->
+                            <div class="modal fade" id="exampleModal${list.id}" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <!-- 模态框面板 -->
+                                <div class="modal-dialog" role="document">
+                                    <!-- 模态框中心 -->
+                                    <div class="modal-content">
+                                        <!-- 模态框头部 -->
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">修改信息</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <!-- 头部结束 -->
+                                        <!-- 模态框主体部分 -->
+                                        <div class="modal-body">
+                                                ${list.id}
+                                        </div>
+                                        <!-- 模态框主体部分结束 -->
+                                        <!-- 脚部开始 -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消
+                                            </button>
+                                            <button type="button" class="btn btn-primary">确定</button>
+                                        </div>
+                                        <!-- 脚部结束 -->
+                                    </div>
+                                    <!-- 模态框中心结束 -->
+                                </div>
+                                <!-- 面板结束 -->
+                            </div>
+                            <!-- 外部结束 -->
+                        </td>
+                        <td>
+                            <a href="#" class="text-danger">删除</a>
+                        </td>
                     </tr>
                 </c:forEach>
 
@@ -176,7 +263,8 @@
 
     </div>
     <%--主体结束--%>
-    <div class="fixed-bottom text-dark bg-light">桂公网安备 000000000001号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>网站浏览量：${applicationScope.countPeo}次</span>
+    <div class="fixed-bottom text-dark bg-light">桂公网安备
+        000000000001号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>网站浏览量：${applicationScope.countPeo}次</span>
     </div>
 </div>
 <%--最外层结束--%>
