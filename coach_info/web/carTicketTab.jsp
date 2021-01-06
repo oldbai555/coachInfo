@@ -183,15 +183,58 @@
                                         <!-- 头部结束 -->
                                         <!-- 模态框主体部分 -->
                                         <div class="modal-body">
-                                                ${list.id}
+                                                <%--                                            表单开始--%>
+                                            <div class="container text-left">
+                                                <h2 class="text-left">购票表</h2>
+                                                <form class="text-left" action="/carTicketTab" method="post">
+                                                    <input type="hidden" name="method" value="add" />
+                                                    <input type="hidden" name="id" value="${list.id}" />
+                                                    <div class="form-group">
+                                                        <p for="car_id" class="text-left">车号:</p>
+                                                        <input type="text" class="form-control text-left" id="car_id"
+                                                               placeholder="1" required="required" value="${list.ticketInfo.id}" name="ticketInfoId">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <p for="mane" class="text-left">姓名:</p>
+                                                        <input type="text" class="form-control text-left disabled" id="mane" name="peopleName"
+                                                               placeholder="" required="required" value="">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <p for="idCard" class="text-left">身份证号码:</p>
+                                                        <input type="text" class="form-control text-left" id="idCard"
+                                                               placeholder="" required="required" value="" name="peopleIdCard">
+                                                        <label id="warning"></label>
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">提交</button>
+                                                </form>
+                                            </div>
+
+                                            <script>
+                                                $("#idCard").blur(function () {
+                                                    var a = $("#idCard").val();
+                                                    var textIDNumber = /^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
+                                                    if (textIDNumber.test(a)) {
+                                                        return true;
+                                                    } else {
+                                                        $('#warning').text('身份证证件号格式有误！');
+                                                        $('#warning').css('color', 'red');
+                                                        return false;
+                                                    }
+                                                })
+                                            </script>
+                                                <%--                                            表单结束--%>
+
                                         </div>
                                         <!-- 模态框主体部分结束 -->
                                         <!-- 脚部开始 -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消
-                                            </button>
-                                            <button type="button" class="btn btn-primary">确定</button>
-                                        </div>
+<%--                                        <div class="modal-footer">--%>
+<%--                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消--%>
+<%--                                            </button>--%>
+<%--                                            <button type="button" class="btn btn-primary">确定</button>--%>
+<%--                                        </div>--%>
                                         <!-- 脚部结束 -->
                                     </div>
                                     <!-- 模态框中心结束 -->
