@@ -29,4 +29,19 @@ public class CarInfoServiceImpl implements CarInfoService {
         int index = (page - 1) * LIMIT;
         return info.findAllPage(index,LIMIT);
     }
+
+    @Override
+    public int insert(CarInfo carInfo) {
+        return info.insert(carInfo);
+    }
+
+    @Override
+    public int update(CarInfo carInfo) {
+        return info.update(carInfo);
+    }
+
+    @Override
+    public int delete(int id) {
+        return info.deleteById(id);
+    }
 }

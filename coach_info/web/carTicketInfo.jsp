@@ -95,7 +95,7 @@
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">购票乘客表 <span
+                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">乘客购票表 <span
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">

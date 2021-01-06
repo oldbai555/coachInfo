@@ -93,7 +93,7 @@
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">购票乘客表 <span
+                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">乘客购票表 <span
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
@@ -133,31 +133,6 @@
                         <a class="nav-link disabled" href="#">尊敬的${admin.username}用户<span
                                 class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-secondary my-2 my-sm-0" href="#" data-toggle="modal"
-                           data-target="#exampleModal">添加</a>
-                    </li>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalLabeladd" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabeladd">添加</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    放表单
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary">添加</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </ul>
             </div>
         </div>
@@ -169,18 +144,18 @@
             <table class="table table-hover ">
                 <thead>
                 <tr>
-                    <th>汽车名称</th>
+                    <th>车牌号</th>
                     <th>车票名</th>
                     <th>总数</th>
                     <th>已售</th>
-                    <th>修改</th>
+                    <th>购买</th>
                     <th>删除</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${sessionScope.list}" var="list">
                     <tr>
-                        <td>${list.ticketInfo.carInfo.carType.carName}</td>
+                        <td>${list.ticketInfo.carInfo.carType.licensePlate}</td>
                         <td>${list.ticketInfo.ticketName}</td>
                         <td>${list.ticketNum}</td>
                         <td>${list.ticketSum}</td>
@@ -188,7 +163,7 @@
                             <!-- Button trigger modal -->
                             <a class="text-secondary" data-toggle="modal"
                                data-target="#exampleModal${list.id}" href="#">
-                                修改
+                                购买
                             </a>
                             <!-- Modal -->
                             <!-- 模态框外部 -->

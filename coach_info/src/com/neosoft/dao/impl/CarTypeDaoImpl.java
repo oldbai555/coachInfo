@@ -153,4 +153,24 @@ public class CarTypeDaoImpl implements ICarTypeDao {
         }
         return num;
     }
+
+    @Override
+    public CarType findByCard(String str) {
+        CarType carType = null;
+        try {
+            connection = JdbcUtil.getConnection();
+            sqlStr = "select * from car_type where license_plate = ?";
+            statement = connection.prepareStatement(sqlStr);
+            statement.setString(1, str);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                carType = new CarType(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.closeConnection(connection, statement, resultSet);
+        }
+        return carType;
+    }
 }

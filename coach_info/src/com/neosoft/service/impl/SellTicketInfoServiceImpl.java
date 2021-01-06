@@ -29,4 +29,9 @@ public class SellTicketInfoServiceImpl implements SellTicketInfoService {
         int index = (page - 1) * LIMIT;
         return info.findAllPage(index,LIMIT);
     }
+
+    @Override
+    public int insert(SellTicketInfo ticketInfo) {
+        return info.insert(ticketInfo);
+    }
 }

@@ -1,5 +1,6 @@
 package com.neosoft.controller;
 
+import com.neosoft.dao.impl.CarTypeDaoImpl;
 import com.neosoft.entity.CarInfo;
 import com.neosoft.entity.CarType;
 import com.neosoft.service.CarInfoService;
@@ -17,6 +18,7 @@ import java.util.List;
 @WebServlet("/carType")
 public class CarInfoController extends HttpServlet {
     private CarInfoService service = new CarInfoServiceImpl();
+    private CarTypeDaoImpl dao = new CarTypeDaoImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -44,7 +46,12 @@ public class CarInfoController extends HttpServlet {
                 session.setAttribute("dataPrePage", 10);
                 session.setAttribute("currentPage", page);
                 session.setAttribute("pages", service.getPages());
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("carType.jsp");
+                break;
+            case "delete":
+                dao.deleteById(dao.findByCard(req.getParameter("licensePlate")).getId());
+                service.delete(Integer.parseInt(req.getParameter("id")));
+                resp.sendRedirect("carType.jsp");
                 break;
         }
 
@@ -52,6 +59,58 @@ public class CarInfoController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        String method = req.getParameter("method");
+        if (method == null) {
+            method = "findAll";
+        }
+        switch (method) {
+            case "findAll":
+                resp.sendRedirect("/carType?page=1");
+                break;
+            case "add":
+                CarType carType = new CarType(req.getParameter("carName"),
+                        Integer.parseInt(req.getParameter("peopleNum")),
+                        req.getParameter("licensePlate"));
+                //将车种添加进入表，添加成功则进行下一步。
+                int insert = dao.insert(carType);
+                //车种信息添加成功后获取该车种的 id
+                if (insert == 0) {
+                    resp.getWriter().write("NO");
+                } else {
+                    CarType carType1 = dao.findByCard(carType.getLicensePlate());
+                    //把car_info的信息完善
+                    CarInfo carInfo = new CarInfo(carType1,
+                            req.getParameter("routeStart"),
+                            req.getParameter("routeEnd"),
+                            req.getParameter("car_start_time"),
+                            Double.parseDouble(req.getParameter("probably_time")));
+                    service.insert(carInfo);
+                    resp.sendRedirect("/carType?page=1");
+                }
+                break;
+            case "update":
+                CarType carTypeUpdate = new CarType(req.getParameter("carName"),
+                        Integer.parseInt(req.getParameter("peopleNum")),
+                        req.getParameter("licensePlate"));
+                //将车种添加进入表，添加成功则进行下一步。
+                int update = dao.update(carTypeUpdate);
+                //车种信息添加成功后获取该车种的 id
+                if (update == 0) {
+                    resp.getWriter().write("NO");
+                } else {
+                    CarType carType1 = dao.findByCard(carTypeUpdate.getLicensePlate());
+                    //把car_info的信息完善
+                    CarInfo carInfo = new CarInfo(carType1,
+                            req.getParameter("routeStart"),
+                            req.getParameter("routeEnd"),
+                            req.getParameter("car_start_time"),
+                            Double.parseDouble(req.getParameter("probably_time")));
+                    service.update(carInfo);
+                    resp.sendRedirect("/carType?page=1");
+                }
+
+                break;
+
+        }
     }
 }

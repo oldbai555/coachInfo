@@ -14,6 +14,7 @@ public interface ICarTicketTabDao {
      */
     CarTicketTab findById(int id);
 
+    CarTicketTab findByInfoId(int infoId);
     /**
      * 分页查询
      *

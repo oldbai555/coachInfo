@@ -10,4 +10,7 @@ public interface SellTicketInfoService {
     int getPages();
 
     List<SellTicketInfo> findAllPage(int page);
+
+    int insert(SellTicketInfo ticketInfo);
+
 }

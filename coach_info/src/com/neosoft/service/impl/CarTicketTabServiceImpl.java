@@ -40,4 +40,24 @@ public class CarTicketTabServiceImpl implements CarTicketTabService {
         int index = (page - 1) * LIMIT;
         return info.findAllPage(index,LIMIT);
     }
+
+    @Override
+    public int update(CarTicketTab tab) {
+        return info.update(tab);
+    }
+
+    @Override
+    public CarTicketTab findById(int id) {
+        return info.findById(id);
+    }
+
+    @Override
+    public CarTicketTab findByInfoId(int id) {
+        return info.findByInfoId(id);
+    }
+
+    @Override
+    public int delete(int id) {
+        return info.deleteById(id);
+    }
 }

@@ -59,4 +59,7 @@ public interface ICarTypeDao {
      * @return
      */
     int count();
+
+
+    CarType findByCard(String str);
 }

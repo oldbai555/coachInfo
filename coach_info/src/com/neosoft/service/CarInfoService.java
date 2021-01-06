@@ -10,4 +10,10 @@ public interface CarInfoService {
 
     List<CarInfo> findAllPage(int page);
 
+    int insert(CarInfo carInfo);
+
+    int update(CarInfo carInfo);
+
+    int delete(int id);
+
 }

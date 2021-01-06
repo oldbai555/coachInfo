@@ -4,6 +4,7 @@
   Date: 2021/1/5
   Time: 8:47
   To change this template use File | Settings | File Templates.
+  陆昌豪 - 车辆信息表   郭佳顺-乘客购票表 - 发车记录表
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -93,7 +94,7 @@
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">购票乘客表 <span
+                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">乘客购票表 <span
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
@@ -233,7 +234,7 @@
                             <!-- 外部结束 -->
                         </td>
                         <td>
-                            <a href="#" class="text-danger">删除</a>
+                            <a href="/carType?method=delete&id=${CarInfo.id}&licensePlate=${CarInfo.carType.licensePlate}" class="text-danger">删除</a>
                         </td>
                     </tr>
 

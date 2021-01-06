@@ -14,6 +14,11 @@ public class CarStartTabServiceImpl implements CarStartTabService{
 
 
     @Override
+    public CarStartTab findById(int id) {
+        return info.findById(id);
+    }
+
+    @Override
     public List<CarStartTab> findAll() {
 
         List<CarStartTab> records = info.findAll();
@@ -37,5 +42,20 @@ public class CarStartTabServiceImpl implements CarStartTabService{
     public List<CarStartTab> findAllPage(int page) {
         int index = (page - 1) * LIMIT;
         return info.findAllPage(index,LIMIT);
+    }
+
+    @Override
+    public int insert(CarStartTab tab) {
+        return info.insert(tab);
+    }
+
+    @Override
+    public int update(CarStartTab tab) {
+        return info.update(tab);
+    }
+
+    @Override
+    public int delete(int id) {
+        return info.deleteById(id);
     }
 }

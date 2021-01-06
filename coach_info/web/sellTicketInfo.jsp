@@ -94,7 +94,7 @@
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">购票乘客表 <span
+                                <a class="nav-link text-secondary" href="/sellTicketInfo?page=1">乘客购票表 <span
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
@@ -187,7 +187,7 @@
                         <td>${list.peopleIdCard}</td>
                         <td>${list.ticketInfo.ticketName}</td>
                         <td>${list.ticketInfo.carInfo.car_start_time}</td>
-                        <td>${list.ticketInfo.carInfo.carType.carName}</td>
+                        <td>${list.ticketInfo.carInfo.carType.licensePlate}</td>
                         <td>
                             <!-- Button trigger modal -->
                             <a class="text-secondary" data-toggle="modal"

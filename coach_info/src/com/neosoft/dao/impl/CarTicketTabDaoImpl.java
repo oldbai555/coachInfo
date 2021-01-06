@@ -42,6 +42,29 @@ public class CarTicketTabDaoImpl implements ICarTicketTabDao {
     }
 
     @Override
+    public CarTicketTab findByInfoId(int infoId) {
+        CarTicketTab ticketTab = null;
+        try {
+            connection = JdbcUtil.getConnection();
+            sqlStr = "select * from car_ticket_tab where ticket_info_id = ?";
+            statement = connection.prepareStatement(sqlStr);
+            statement.setInt(1, infoId);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                ticketTab = new CarTicketTab(resultSet.getInt(1),
+                        resultSet.getInt(2),
+                        resultSet.getInt(3),
+                        resultSet.getInt(4));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.closeConnection(connection, statement, resultSet);
+        }
+        return ticketTab;
+    }
+
+    @Override
     public List<CarTicketTab> findAllPage(int index, int limit) {
         List<CarTicketTab> list = new ArrayList<>();
         CarTicketTab ticketTab = null;

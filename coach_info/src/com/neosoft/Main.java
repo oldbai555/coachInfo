@@ -1,12 +1,11 @@
 package com.neosoft;
 
 import com.neosoft.dao.impl.*;
-import com.neosoft.entity.CarInfo;
-import com.neosoft.entity.CarStartTab;
-import com.neosoft.entity.CarTicketTab;
-import com.neosoft.entity.CarType;
+import com.neosoft.entity.*;
 import com.neosoft.service.CarTicketTabService;
+import com.neosoft.service.impl.CarStartTabServiceImpl;
 import com.neosoft.service.impl.CarTicketTabServiceImpl;
+import com.neosoft.service.impl.SellTicketInfoServiceImpl;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -71,10 +70,57 @@ public class Main {
 //        System.out.println(new CarTicketInfoDaoImpl().findByCarId(1));
 //        System.out.println(new CarTicketInfoDaoImpl().findAll());
 //        System.out.println(new CarTicketInfoDaoImpl().findAllPage(0, 6));
-        System.out.println(new SellTicketInfoDaoImpl().findAllPage(0,6));
+//        System.out.println(new SellTicketInfoDaoImpl().findAllPage(0,6));
 //        System.out.println(new CarTicketTabDaoImpl().findById(1));
 //        CarTicketTabService obj = new CarTicketTabServiceImpl();
 //        obj.findAll();
+//  +++001
+//        CarType carType = new CarType("测试一号车", 300, "桂A-0050");
+//        //将车种添加进入表，添加成功则进行下一步。
+//        int insert = 0;
+//        try {
+//            insert = new CarTypeDaoImpl().insert(carType);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        //车种信息添加成功后获取该车种的 id
+//        if (insert == 0) {
+//            System.out.println("no");
+//        } else {
+//            CarType carType1 = new CarTypeDaoImpl().findByCard(carType.getLicensePlate());
+//            CarInfo carInfo = new CarInfo(carType1,"routeStart","routeEnd","car_start_time",2);
+//            System.out.println(new CarInfoDaoImpl().insert(carInfo));
+//        }
+//  +++001
+//        CarTicketTab tab = new CarTicketTabServiceImpl().findById(1);
+//        if (tab.getTicketNum() == tab.getTicketSum()){
+//            System.out.println("NO");
+//        }else {
+//            int ticketInfoId = 1;
+//            String peopleName = "王小明";
+//            String peopleIdCard = "45222000100010005";
+//            int insert = new SellTicketInfoServiceImpl().insert(new SellTicketInfo(ticketInfoId, peopleName, peopleIdCard));
+//            if (insert != 0){
+//                tab.setTicketSum(tab.getTicketSum()+1);
+//                System.out.println(new CarTicketTabServiceImpl().update(tab));
+//            }
+//        }
+//         --------1
+//        CarType carType = new CarTypeDaoImpl().findByCard("桂A-0001");
+//        int actualNum = new CarTicketTabServiceImpl()
+//                .findByInfoId(new CarTicketInfoDaoImpl()
+//                        .findByCarId(carType.getId())
+//                        .getId())
+//                .getTicketSum();
+//        Date startTime = reDate;
+//        System.out.println(new CarStartTabServiceImpl().insert(new CarStartTab(carType, actualNum, startTime)));
+
+        CarType carType = new CarTypeDaoImpl().findByCard("桂A-0001");
+        CarStartTab tab = new CarStartTabServiceImpl().findById(17);
+        tab.setActualNum(5);
+        tab.setStartTime(reDate);
+        System.out.println(new CarStartTabServiceImpl().update(tab));
+
     }
 
 }

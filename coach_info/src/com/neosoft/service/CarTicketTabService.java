@@ -11,4 +11,13 @@ public interface CarTicketTabService {
 
     List<CarTicketTab> findAllPage(int page);
 
+    int update(CarTicketTab tab);
+
+    CarTicketTab findById(int id);
+
+    CarTicketTab findByInfoId(int id);
+
+    int delete(int id);
+
+
 }
