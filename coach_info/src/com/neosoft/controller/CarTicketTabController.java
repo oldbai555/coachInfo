@@ -48,6 +48,9 @@ public class CarTicketTabController extends HttpServlet {
                 session.setAttribute("pages", service.getPages());
                 resp.sendRedirect("carTicketTab.jsp");
                 break;
+            default:
+                resp.sendRedirect("/carTicketTab?page=1");
+                break;
         }
 
     }
@@ -89,6 +92,9 @@ public class CarTicketTabController extends HttpServlet {
                 break;
             case "delete":
                 service.delete(Integer.parseInt(req.getParameter("id")));
+                resp.sendRedirect("/carTicketTab?page=1");
+                break;
+            default:
                 resp.sendRedirect("/carTicketTab?page=1");
                 break;
         }

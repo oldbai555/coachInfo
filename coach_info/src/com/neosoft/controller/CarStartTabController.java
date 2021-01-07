@@ -55,6 +55,9 @@ public class CarStartTabController extends HttpServlet {
                 service.delete(Integer.parseInt(req.getParameter("id")));
                 resp.sendRedirect("/carStartTab?page=1");
                 break;
+            default:
+                resp.sendRedirect("/carStartTab?page=1");
+                break;
         }
     }
 
@@ -104,6 +107,9 @@ public class CarStartTabController extends HttpServlet {
                     service.update(tab);
                     resp.sendRedirect("/carStartTab?page=1");
                 }
+                break;
+            default:
+                resp.sendRedirect("/carStartTab?page=1");
                 break;
 
         }

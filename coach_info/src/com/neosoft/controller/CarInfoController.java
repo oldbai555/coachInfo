@@ -76,6 +76,9 @@ public class CarInfoController extends HttpServlet {
                 session.setAttribute("pages", 1);
                 resp.sendRedirect("carType.jsp");
                 break;
+            default:
+                resp.sendRedirect("/carType?page=1");
+                break;
         }
 
     }
@@ -133,7 +136,9 @@ public class CarInfoController extends HttpServlet {
                 }
 
                 break;
-
+            default:
+                resp.sendRedirect("/carType?page=1");
+                break;
         }
     }
 }

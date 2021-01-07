@@ -26,6 +26,9 @@ public class CountNumController extends HttpServlet {
             case "zhuxing":
                 resp.getWriter().write(new Gson().toJson(new CarTicketTabDaoImpl().findAll()));
                 break;
+            default:
+                resp.sendRedirect("index.jsp");
+                break;
         }
     }
 }

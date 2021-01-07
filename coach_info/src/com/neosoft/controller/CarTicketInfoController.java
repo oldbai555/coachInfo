@@ -48,6 +48,9 @@ public class CarTicketInfoController extends HttpServlet {
                 new CarTicketTabDaoImpl().deleteByTicket_info_id(Integer.parseInt(req.getParameter("id")));
                 resp.sendRedirect("/carTicketInfo?page=1");
                 break;
+            default:
+                resp.sendRedirect("/carTicketInfo?page=1");
+                break;
         }
     }
 
@@ -67,7 +70,7 @@ public class CarTicketInfoController extends HttpServlet {
          * 更新操作
          * 更新车票名
          */
-        switch (method){
+        switch (method) {
             case "findAll":
                 resp.sendRedirect("/carTicketInfo?page=1");
                 break;
@@ -75,10 +78,10 @@ public class CarTicketInfoController extends HttpServlet {
                 String licensePlate = req.getParameter("licensePlate");
                 String ticketName = req.getParameter("ticketName");
                 CarInfo carInfo = new CarInfoDaoImpl().findByCarId(new CarTypeDaoImpl().findByCard(licensePlate).getId());
-                CarTicketInfo ticketInfo = new CarTicketInfo(carInfo,ticketName);
+                CarTicketInfo ticketInfo = new CarTicketInfo(carInfo, ticketName);
                 service.insert(ticketInfo);
                 CarTicketInfo info1 = service.findByCarId(carInfo.getCarType().getId());
-                new CarTicketTabDaoImpl().insert(new CarTicketTab(info1.getId(),carInfo.getCarType().getPeopleNum(),0));
+                new CarTicketTabDaoImpl().insert(new CarTicketTab(info1.getId(), carInfo.getCarType().getPeopleNum(), 0));
                 resp.sendRedirect("/carTicketInfo?page=1");
                 break;
             case "update":
@@ -86,6 +89,9 @@ public class CarTicketInfoController extends HttpServlet {
                 CarTicketInfo info = service.findById(id);
                 info.setTicketName(req.getParameter("ticketName"));
                 service.update(info);
+                resp.sendRedirect("/carTicketInfo?page=1");
+                break;
+            default:
                 resp.sendRedirect("/carTicketInfo?page=1");
                 break;
         }

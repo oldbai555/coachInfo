@@ -106,6 +106,9 @@ public class SellTicketInfoController extends HttpServlet {
                 new SellTicketInfoDaoImpl().update(ticketInfo);
                 resp.sendRedirect("/sellTicketInfo?page=1");
                 break;
+            default:
+                resp.sendRedirect("/sellTicketInfo?page=1");
+                break;
         }
     }
 }
