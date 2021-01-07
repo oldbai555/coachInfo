@@ -43,6 +43,29 @@ public class SellTicketInfoDaoImpl implements ISellTicketInfoDao {
     }
 
     @Override
+    public SellTicketInfo findByTicketInfoId(int ticketInfoId) {
+        SellTicketInfo sellTicketInfo = null;
+        try {
+            connection = JdbcUtil.getConnection();
+            sqlStr = "select * from sell_ticket_info where ticket_info_id = ?";
+            statement = connection.prepareStatement(sqlStr);
+            statement.setInt(1, ticketInfoId);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                sellTicketInfo = new SellTicketInfo(resultSet.getInt(1),
+                        resultSet.getInt(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.closeConnection(connection, statement, resultSet);
+        }
+        return sellTicketInfo;
+    }
+
+    @Override
     public List<SellTicketInfo> findAllPage(int index, int limit) {
         List<SellTicketInfo> list = new ArrayList<>();
         SellTicketInfo sellTicketInfo = null;
