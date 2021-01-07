@@ -115,11 +115,13 @@ public class Main {
 //        Date startTime = reDate;
 //        System.out.println(new CarStartTabServiceImpl().insert(new CarStartTab(carType, actualNum, startTime)));
 
-        CarType carType = new CarTypeDaoImpl().findByCard("桂A-0001");
-        CarStartTab tab = new CarStartTabServiceImpl().findById(17);
-        tab.setActualNum(5);
-        tab.setStartTime(reDate);
-        System.out.println(new CarStartTabServiceImpl().update(tab));
+//        CarType carType = new CarTypeDaoImpl().findByCard("桂A-0001");
+//        CarStartTab tab = new CarStartTabServiceImpl().findById(17);
+//        tab.setActualNum(5);
+//        tab.setStartTime(reDate);
+//        System.out.println(new CarStartTabServiceImpl().update(tab));
+
+        System.out.println(new CarInfoDaoImpl().findPTime());
 
     }
 

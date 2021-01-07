@@ -85,7 +85,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link text-secondary" href="#">首页 <span
+                                <a class="nav-link text-secondary" href="index.jsp">首页 <span
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">

@@ -58,7 +58,7 @@
         },function(data,status){
             console.log(data);
             if (data == "OK"){
-                location.href = "/carType?page=1";
+                location.href = "/index.jsp";
             }else{
                 location.href = "/login.jsp";
             }

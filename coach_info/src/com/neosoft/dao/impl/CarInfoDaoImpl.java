@@ -51,6 +51,25 @@ public class CarInfoDaoImpl implements ICarInfoDao {
     }
 
     @Override
+    public List<Double> findPTime() {
+        List<Double> list = new ArrayList<>();
+        try {
+            connection = JdbcUtil.getConnection();
+            sqlStr = "select probably_time from car_info , car_type where car_id = car_type.id";
+            statement = connection.prepareStatement(sqlStr);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                list.add(resultSet.getDouble(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.closeConnection(connection, statement, resultSet);
+        }
+        return list;
+    }
+
+    @Override
     public CarInfo findByCarId(int carId) {
         CarInfo carInfo = null;
         try {

@@ -14,6 +14,8 @@ public interface ICarInfoDao {
      */
     CarInfo findById(int id);
 
+    List<Double> findPTime();
+
     /**
      * 通过 汽车型号 也就是 car_type表的id查询
      *
