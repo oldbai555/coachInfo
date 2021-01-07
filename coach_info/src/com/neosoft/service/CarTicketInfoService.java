@@ -11,4 +11,13 @@ public interface CarTicketInfoService {
     List<CarTicketInfo> findAllPage(int page);
 
     CarTicketInfo findById(int Id);
+
+
+    int insert(CarTicketInfo ticketInfo);
+
+    int update(CarTicketInfo ticketInfo);
+
+    int delete(int id);
+
+    CarTicketInfo findByCarId(int carId);
 }

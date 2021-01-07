@@ -182,7 +182,7 @@
                                                     <option>请选择车辆</option>
                                                 </select>
                                             </div>
-                                            <input name="licensePlate" type="text" value="" id="licensePlate"/>
+                                            <input name="licensePlate" type="hidden" value="" id="licensePlate"/>
                                             <button type="submit" class="btn btn-primary">提交</button>
                                         </form>
                                     </div>

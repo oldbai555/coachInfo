@@ -19,6 +19,34 @@
     <script src="./js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/bootstrap.bundle.js" type="text/javascript" charset="utf-8"></script>
     <style type="text/css">
+        #eorro1 {
+            color: green;
+        }
+
+        #eorro2 {
+            color: green;
+        }
+
+        #eorro3 {
+            color: green;
+        }
+
+        #eorro4 {
+            color: green;
+        }
+
+        #eorro5 {
+            color: green;
+        }
+
+        #eorro6 {
+            color: green;
+        }
+
+        #eorro7 {
+            color: green;
+        }
+
         .carbg {
             background-image: url(./img/bg1.jpg);
             background-repeat: no-repeat;
@@ -56,6 +84,145 @@
                 location.href = "/carType?page=" + pages;
             })
         })
+    </script>
+    <script>
+        window.onload = function () {
+
+
+            // document.getElementById("form").onsubmit = function () {
+            //
+            //
+            //     return checkcar_name() && checkpeople_num() && checklicense_plate() && checkroute_start() && checkroute_end() && checkcar_start_time() && checkprobably_time();
+            //
+            // }
+            document.getElementById("car_name").onblur = checkcar_name;
+            document.getElementById("people_num").onblur = checkpeople_num;
+            document.getElementById("license_plate").onblur = checklicense_plate;
+            document.getElementById("route_start").onblur = checkroute_start;
+            document.getElementById("route_end").onblur = checkroute_end;
+            document.getElementById("car_start_time").onblur = checkcar_start_time;
+            document.getElementById("probably_time").onblur = checkprobably_time;
+
+
+        }
+
+        function checkcar_name() {
+
+            var car_name = document.getElementById("car_name").value;
+            var reg_car_name = /^[A-Za-z0-9\u4e00-\u9fa5]+$/gi;
+            var flag = reg_car_name.test(car_name);
+            var eorr1 = document.getElementById("eorro1");
+            // var eorr2 = document.getElementById("eorro2");
+            if (flag) {
+                eorr1.innerHTML = "输入正确"
+
+            } else {
+                eorr1.innerHTML = '<span style="color:#FF0000">请输入正确的汽车名</span>'
+            }
+            return flag;
+
+        }
+
+        function checkpeople_num() {
+
+            var people_num = document.getElementById("people_num").value;
+            var reg_people_num = /^\w{2,}$/;
+            var flag = reg_people_num.test(people_num);
+            var eorr1 = document.getElementById("eorro2");
+// var eorr2 = document.getElementById("eorro2");
+            if (flag) {
+                eorr1.innerHTML = "载客人数输入正确"
+
+            } else {
+                eorr1.innerHTML = '<span style="color:#FF0000">载客人数输入错误</span>'
+            }
+            return flag;
+
+        }
+
+        function checklicense_plate() {
+
+            var license_plate = document.getElementById("license_plate").value;
+            var reg_license_plate = /^[A-Za-z0-9\u4e00-\u9fa5]+$/gi;
+            var flag = reg_license_plate.test(license_plate);
+            var eorr1 = document.getElementById("eorro3");
+            if (true) {
+                eorr1.innerHTML = "车牌号格式输入正确"
+
+            } else {
+                eorr1.innerHTML = '<span style="color:#FF0000">车牌号格式输入错误</span>'
+            }
+            return flag;
+
+        }
+
+        function checkroute_start() {
+
+            var route_start = document.getElementById("route_start").value;
+            var reg_route_start = /^[A-Za-z0-9\u4e00-\u9fa5]+$/gi;
+            var flag = reg_route_start.test(route_start);
+            var eorr1 = document.getElementById("eorro4");
+// var eorr2 = document.getElementById("eorro2");
+            if (flag) {
+                eorr1.innerHTML = "起始地输入正确"
+
+            } else {
+                eorr1.innerHTML = '<span style="color:#FF0000">起始地输入错误</span>'
+            }
+            return flag;
+
+        }
+
+        function checkroute_end() {
+
+            var route_end = document.getElementById("route_end").value;
+            var reg_route_end = /^[A-Za-z0-9\u4e00-\u9fa5]+$/gi;
+            var flag = reg_route_end.test(route_end);
+            var eorr1 = document.getElementById("eorro5");
+// var eorr2 = document.getElementById("eorro2");
+            if (flag) {
+                eorr1.innerHTML = "终点输入正确"
+
+            } else {
+                eorr1.innerHTML = '<span style="color:#FF0000">终点输入错误</span>'
+            }
+            return flag;
+
+        }
+
+
+        function checkcar_start_time() {
+
+            var car_start_time = document.getElementById("car_start_time").value;
+            var reg_car_start_time = /^\w{1,}$/;
+            var flag = reg_car_start_time.test(car_start_time);
+            var eorr1 = document.getElementById("eorro6");
+// var eorr2 = document.getElementById("eorro2");
+            if (true) {
+                eorr1.innerHTML = "发车时间输入正确"
+
+            } else {
+                eorr1.innerHTML = '<span style="color:#FF0000">发车时间输入错误</span>'
+            }
+            return flag;
+
+        }
+
+        function checkprobably_time() {
+
+            var probably_time = document.getElementById("probably_time").value;
+            var reg_probably_time = /^\w{1,}$/;
+            var flag = reg_probably_time.test(probably_time);
+            var eorr1 = document.getElementById("eorro7");
+            if (flag) {
+                eorr1.innerHTML = "格式输入正确"
+
+            } else {
+                eorr1.innerHTML = '<span style="color:#FF0000">格式输入错误</span>'
+            }
+            return flag;
+
+        }
     </script>
 </head>
 <body>
@@ -151,11 +318,55 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    放表单
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary">添加</button>
+                                    <div class="container">
+                                        <h2>添加车辆信息</h2>
+                                        <form action="/carType" method="post" id="form">
+                                            <input type="hidden" value="add" name="method">
+                                            <div class="form-group">
+                                                <label for="car_name">汽车:</label>
+                                                <input type="text" class="form-control" id="car_name"
+                                                       placeholder="输入汽车名" name="carName" value="">
+                                                <span id="eorro1"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="people_num">载客量:</label>
+                                                <input type="text" class="form-control" id="people_num"
+                                                       placeholder="输入载客量" name="peopleNum" value="">
+                                                <span id="eorro2"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="license_plate">车牌号:</label>
+                                                <input type="text" class="form-control" id="license_plate"
+                                                       placeholder="输入车牌号" name="licensePlate" value="">
+                                                <span id="eorro3"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="route_start">起始地:</label>
+                                                <input type="text" class="form-control" id="route_start"
+                                                       placeholder="输入起始地" name="routeStart" value="">
+                                                <span id="eorro4"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="route_end">终点:</label>
+                                                <input type="text" class="form-control" id="route_end"
+                                                       placeholder="输入终点" name="routeEnd" value="">
+                                                <span id="eorro5"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="car_start_time">起始时间:</label>
+                                                <input type="text" class="form-control" id="car_start_time"
+                                                       placeholder="输入起始时间" name="car_start_time" value="">
+                                                <span id="eorro6"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="probably_time">probably_time:</label>
+                                                <input type="text" class="form-control" id="probably_time"
+                                                       placeholder="耗时" name="probably_time" value="">
+                                                <span id="eorro7"></span>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">提交添加</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -216,15 +427,64 @@
                                         <!-- 头部结束 -->
                                         <!-- 模态框主体部分 -->
                                         <div class="modal-body">
-                                                ${CarInfo.id}
+                                            <div class="container">
+                                                <h2>堆叠表单</h2>
+                                                <form action="/carType" method="post" id="form1">
+                                                    <input type="hidden" name="method" value="update">
+                                                    <div class="form-group">
+                                                        <label for="car_name">汽车:</label>
+                                                        <input type="text" class="form-control" id="car_name1"
+                                                               placeholder="输入汽车名" name="carName" value="${CarInfo.carType.carName}">
+                                                        <span id="eorro11"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="people_num">载客量:</label>
+                                                        <input type="text" class="form-control" id="people_num1"
+                                                               placeholder="输入载客量" name="peopleNum" value="${CarInfo.carType.peopleNum}">
+                                                        <span id="eorro21"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="license_plate">车牌号:</label>
+                                                        <input type="text" class="form-control" id="license_plate1"
+                                                               placeholder="输入车牌号" name="licensePlate" value="${CarInfo.carType.licensePlate}">
+                                                        <span id="eorro31"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="route_start">起始地:</label>
+                                                        <input type="text" class="form-control" id="route_start1"
+                                                               placeholder="输入起始地" name="routeStart" value="${CarInfo.routeStart}">
+                                                        <span id="eorro41"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="route_end">终点:</label>
+                                                        <input type="text" class="form-control" id="route_end1"
+                                                               placeholder="输入终点" name="routeEnd" value="${CarInfo.routeEnd}">
+                                                        <span id="eorro51"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="car_start_time">起始时间:</label>
+                                                        <input type="text" class="form-control" id="car_start_time1"
+                                                               placeholder="输入起始时间" name="car_start_time" value="${CarInfo.car_start_time}">
+                                                        <span id="eorro61"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="probably_time">probably_time:</label>
+                                                        <input type="text" class="form-control" id="probably_time1"
+                                                               placeholder="耗时" name="probably_time" value="${CarInfo.probably_time}">
+                                                        <span id="eorro71"></span>
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">提交添加</button>
+                                                </form>
+                                            </div>
                                         </div>
                                         <!-- 模态框主体部分结束 -->
                                         <!-- 脚部开始 -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消
-                                            </button>
-                                            <button type="button" class="btn btn-primary">确定</button>
-                                        </div>
+<%--                                        <div class="modal-footer">--%>
+<%--                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消--%>
+<%--                                            </button>--%>
+<%--                                            <button type="button" class="btn btn-primary">确定</button>--%>
+<%--                                        </div>--%>
                                         <!-- 脚部结束 -->
                                     </div>
                                     <!-- 模态框中心结束 -->
@@ -234,7 +494,8 @@
                             <!-- 外部结束 -->
                         </td>
                         <td>
-                            <a href="/carType?method=delete&id=${CarInfo.id}&licensePlate=${CarInfo.carType.licensePlate}" class="text-danger">删除</a>
+                            <a href="/carType?method=delete&id=${CarInfo.id}&licensePlate=${CarInfo.carType.licensePlate}"
+                               class="text-danger">删除</a>
                         </td>
                     </tr>
 

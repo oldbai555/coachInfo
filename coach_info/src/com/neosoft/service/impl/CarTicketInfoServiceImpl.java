@@ -35,4 +35,24 @@ public class CarTicketInfoServiceImpl implements CarTicketInfoService {
     public CarTicketInfo findById(int Id) {
         return info.findById(Id);
     }
+
+    @Override
+    public int insert(CarTicketInfo ticketInfo) {
+        return info.insert(ticketInfo);
+    }
+
+    @Override
+    public int update(CarTicketInfo ticketInfo) {
+        return info.update(ticketInfo);
+    }
+
+    @Override
+    public int delete(int id) {
+        return info.deleteById(id);
+    }
+
+    @Override
+    public CarTicketInfo findByCarId(int carId) {
+        return info.findByCarId(carId);
+    }
 }

@@ -24,7 +24,7 @@ public class CarTicketInfoDaoImpl implements ICarTicketInfoDao {
         CarTicketInfo ticketInfo = null;
         try {
             connection = JdbcUtil.getConnection();
-            sqlStr = "select * from car_ticket_info , car_type , car_info where car_ticket_info.car_id = car_type.id and car_ticket_info.car_id = car_info.id and car_ticket_info.id = ?";
+            sqlStr = "select * from car_ticket_info , car_type , car_info where car_ticket_info.car_id = car_type.id and car_ticket_info.car_id = car_info.car_id and car_ticket_info.id = ?";
             statement = connection.prepareStatement(sqlStr);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
@@ -55,7 +55,7 @@ public class CarTicketInfoDaoImpl implements ICarTicketInfoDao {
         CarTicketInfo ticketInfo = null;
         try {
             connection = JdbcUtil.getConnection();
-            sqlStr = "select * from car_ticket_info , car_type , car_info where car_ticket_info.car_id = car_type.id and car_ticket_info.car_id = car_info.id and car_ticket_info.car_id = ?";
+            sqlStr = "select * from car_ticket_info , car_type , car_info where car_ticket_info.car_id = car_type.id and car_ticket_info.car_id = car_info.car_id and car_ticket_info.car_id = ?";
             statement = connection.prepareStatement(sqlStr);
             statement.setInt(1, carId);
             resultSet = statement.executeQuery();
@@ -87,7 +87,7 @@ public class CarTicketInfoDaoImpl implements ICarTicketInfoDao {
         CarTicketInfo ticketInfo = null;
         try {
             connection = JdbcUtil.getConnection();
-            sqlStr = "select * from car_ticket_info , car_type , car_info where car_ticket_info.car_id = car_type.id and car_ticket_info.car_id = car_info.id limit ? , ?";
+            sqlStr = "select * from car_ticket_info , car_type , car_info where car_ticket_info.car_id = car_type.id and car_ticket_info.car_id = car_info.car_id limit ? , ?";
             statement = connection.prepareStatement(sqlStr);
             statement.setInt(1,index);
             statement.setInt(2,limit);
@@ -121,7 +121,7 @@ public class CarTicketInfoDaoImpl implements ICarTicketInfoDao {
         CarTicketInfo ticketInfo = null;
         try {
             connection = JdbcUtil.getConnection();
-            sqlStr = "select * from car_ticket_info , car_type , car_info where car_ticket_info.car_id = car_type.id and car_ticket_info.car_id = car_info.id";
+            sqlStr = "select * from car_ticket_info , car_type , car_info where car_ticket_info.car_id = car_type.id and car_ticket_info.car_id = car_info.car_id";
             statement = connection.prepareStatement(sqlStr);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {

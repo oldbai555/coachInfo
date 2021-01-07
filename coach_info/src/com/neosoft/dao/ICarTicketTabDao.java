@@ -55,6 +55,8 @@ public interface ICarTicketTabDao {
      */
     int deleteById(int id);
 
+    int deleteByTicket_info_id(int id);
+
     /**
      * 获取所有数据的数量
      *

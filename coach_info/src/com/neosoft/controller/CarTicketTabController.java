@@ -40,7 +40,7 @@ public class CarTicketTabController extends HttpServlet {
                 Integer page = Integer.parseInt(pageStr);
                 List<CarTicketTab> list = service.findAllPage(page);
                 for (CarTicketTab tab : list) {
-                    tab.setTicketInfo(service1.findById(tab.getId()));
+                    tab.setTicketInfo(service1.findById(tab.getTicketInfoId()));
                 }
                 session.setAttribute("list", list);
                 session.setAttribute("dataPrePage", 10);

@@ -168,6 +168,22 @@ public class CarTicketTabDaoImpl implements ICarTicketTabDao {
     }
 
     @Override
+    public int deleteByTicket_info_id(int id) {
+        try {
+            connection = JdbcUtil.getConnection();
+            String strSql = "delete from car_ticket_tab where ticket_info_id = ?";
+            statement = connection.prepareStatement(strSql);
+            statement.setInt(1, id);
+            return statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.closeConnection(connection, statement, resultSet);
+        }
+        return 0;
+    }
+
+    @Override
     public int count() {
         int num = 0;
         try {

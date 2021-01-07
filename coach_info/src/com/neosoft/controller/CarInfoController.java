@@ -50,9 +50,12 @@ public class CarInfoController extends HttpServlet {
                 resp.sendRedirect("carType.jsp");
                 break;
             case "delete":
+                /**
+                 * 删除该车型
+                 */
                 dao.deleteById(dao.findByCard(req.getParameter("licensePlate")).getId());
                 service.delete(Integer.parseInt(req.getParameter("id")));
-                resp.sendRedirect("carType.jsp");
+                resp.sendRedirect("/carType?page=1");
                 break;
             case "select":
                 List<CarType> all = dao.findAll();
@@ -97,9 +100,9 @@ public class CarInfoController extends HttpServlet {
                 }
                 break;
             case "update":
-                CarType carTypeUpdate = new CarType(req.getParameter("carName"),
-                        Integer.parseInt(req.getParameter("peopleNum")),
-                        req.getParameter("licensePlate"));
+                CarType carTypeUpdate = dao.findByCard(req.getParameter("licensePlate"));
+                carTypeUpdate.setCarName(req.getParameter("carName"));
+                carTypeUpdate.setPeopleNum(Integer.parseInt(req.getParameter("peopleNum")));
                 //将车种添加进入表，添加成功则进行下一步。
                 int update = dao.update(carTypeUpdate);
                 //车种信息添加成功后获取该车种的 id
