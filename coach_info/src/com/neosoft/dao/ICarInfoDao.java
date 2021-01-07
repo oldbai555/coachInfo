@@ -32,7 +32,7 @@ public interface ICarInfoDao {
      * @return
      */
     List<CarInfo> findAllPage(int index, int limit);
-
+    List<CarInfo> findAllPageLike(int index, int limit, String str);
     /**
      * 查找所有
      *

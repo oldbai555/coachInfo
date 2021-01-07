@@ -292,8 +292,9 @@
         <%--    搜索框--%>
         <div class="d-flex flex-row-reverse bd-highlight row">
             <div class="p-2 bd-highlight">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0" action="/carType" method="get">
+                    <input type="hidden" name="method" value="like">
+                    <input class="form-control mr-sm-2" type="search" placeholder="搜索车辆信息" aria-label="Search" name="likeName">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
                 </form>
             </div>

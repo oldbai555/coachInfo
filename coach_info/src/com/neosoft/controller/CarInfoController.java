@@ -1,9 +1,13 @@
 package com.neosoft.controller;
 
 import com.google.gson.Gson;
+import com.neosoft.dao.impl.CarInfoDaoImpl;
+import com.neosoft.dao.impl.CarTicketInfoDaoImpl;
 import com.neosoft.dao.impl.CarTypeDaoImpl;
+import com.neosoft.dao.impl.SellTicketInfoDaoImpl;
 import com.neosoft.entity.CarInfo;
 import com.neosoft.entity.CarType;
+import com.neosoft.entity.SellTicketInfo;
 import com.neosoft.service.CarInfoService;
 import com.neosoft.service.impl.CarInfoServiceImpl;
 
@@ -63,6 +67,14 @@ public class CarInfoController extends HttpServlet {
 //                System.out.println(all);
                 session.setAttribute("selectCarType",all);
                 resp.getWriter().write(gson.toJson(all));
+                break;
+            case "like":
+                list = new CarInfoDaoImpl().findAllPageLike(0,50,req.getParameter("likeName"));
+                session.setAttribute("list", list);
+                session.setAttribute("dataPrePage", 50);
+                session.setAttribute("currentPage", 1);
+                session.setAttribute("pages", 1);
+                resp.sendRedirect("carType.jsp");
                 break;
         }
 

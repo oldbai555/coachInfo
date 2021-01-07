@@ -16,6 +16,8 @@ public interface ISellTicketInfoDao {
 
     SellTicketInfo findByTicketInfoId(int ticketInfoId);
 
+    List<SellTicketInfo> findAllPageLike(int index, int limit ,String str);
+
     /**
      * @param index 从第几项开始查询
      * @param limit 一次查询几个

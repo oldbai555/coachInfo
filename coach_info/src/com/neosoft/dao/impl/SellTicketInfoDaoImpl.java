@@ -66,6 +66,33 @@ public class SellTicketInfoDaoImpl implements ISellTicketInfoDao {
     }
 
     @Override
+    public List<SellTicketInfo> findAllPageLike(int index, int limit ,String str) {
+        List<SellTicketInfo> list = new ArrayList<>();
+        SellTicketInfo sellTicketInfo = null;
+        try {
+            connection = JdbcUtil.getConnection();
+            sqlStr = "select * from sell_ticket_info where people_name like ? limit ? , ?";
+            statement = connection.prepareStatement(sqlStr);
+            statement.setString(1,"%"+str+"%");
+            statement.setInt(2, index);
+            statement.setInt(3, limit);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                sellTicketInfo = new SellTicketInfo(resultSet.getInt(1),
+                        resultSet.getInt(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4));
+                list.add(sellTicketInfo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.closeConnection(connection, statement, resultSet);
+        }
+        return list;
+    }
+
+    @Override
     public List<SellTicketInfo> findAllPage(int index, int limit) {
         List<SellTicketInfo> list = new ArrayList<>();
         SellTicketInfo sellTicketInfo = null;

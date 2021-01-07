@@ -132,6 +132,39 @@ public class CarInfoDaoImpl implements ICarInfoDao {
     }
 
     @Override
+    public List<CarInfo> findAllPageLike(int index, int limit, String str) {
+        List<CarInfo> list = new ArrayList<>();
+        CarInfo carInfo = null;
+        try {
+            connection = JdbcUtil.getConnection();
+            sqlStr = "select * from car_info , car_type where car_id = car_type.id and car_type.car_name like ? limit ?,?";
+            statement = connection.prepareStatement(sqlStr);
+            statement.setString(1,"%"+str+"%");
+            statement.setInt(2, index);
+            statement.setInt(3, limit);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                carInfo = new CarInfo(resultSet.getInt(1),
+                        new CarType(resultSet.getInt(7),
+                                resultSet.getString(8),
+                                resultSet.getInt(9),
+                                resultSet.getString(10)),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getDouble(6)
+                );
+                list.add(carInfo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JdbcUtil.closeConnection(connection, statement, resultSet);
+        }
+        return list;
+    }
+
+    @Override
     public List<CarInfo> findAll() {
 
         List<CarInfo> list = new ArrayList<>();

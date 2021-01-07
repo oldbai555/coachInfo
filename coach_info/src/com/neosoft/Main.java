@@ -121,8 +121,9 @@ public class Main {
 //        tab.setStartTime(reDate);
 //        System.out.println(new CarStartTabServiceImpl().update(tab));
 
-        System.out.println(new CarInfoDaoImpl().findPTime());
-
+//        System.out.println(new CarInfoDaoImpl().findPTime());
+        System.out.println(new SellTicketInfoDaoImpl().findAllPageLike(0,1,"白"));
+        System.out.println(new CarInfoDaoImpl().findAllPageLike(0,50,"五"));
     }
 
 }

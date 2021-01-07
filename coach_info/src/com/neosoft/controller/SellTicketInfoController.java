@@ -55,6 +55,17 @@ public class SellTicketInfoController extends HttpServlet {
                 new SellTicketInfoDaoImpl().deleteById(id);
                 resp.sendRedirect("/sellTicketInfo?page=1");
                 break;
+            case "like":
+                list = new SellTicketInfoDaoImpl().findAllPageLike(0,50,req.getParameter("likeName"));
+                for (SellTicketInfo info : list) {
+                    info.setTicketInfo(new CarTicketInfoDaoImpl().findById(info.getTicketInfoId()));
+                }
+                session.setAttribute("list", list);
+                session.setAttribute("currentPage", 1);
+                session.setAttribute("pages", 1);
+                session.setAttribute("dataPrePage", 50);
+                resp.sendRedirect("sellTicketInfo.jsp");
+                break;
         }
     }
 

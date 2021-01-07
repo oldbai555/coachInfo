@@ -60,21 +60,7 @@
                 alert("123")
             }
 
-            $("#licensePlate1").mouseover(function () {
-                $.get("/carType?method=select",
-                    function (data, status) {
-                        var dataJsion = JSON.parse(data)
-                        for (var i = 0; i < dataJsion.length; i++) {
-                            var option = document.createElement("option");
-                            option.innerText = dataJsion[i].licensePlate;
-                            option.value = i;
-                            $("#licensePlate1").append(option)
-                        }
-                    })
-            })
-            $("#licensePlate1").change(function () {
-                $("#licensePlate").val($("#licensePlate1").find("option:selected").text())
-            })
+
 
         })
     </script>
@@ -146,8 +132,9 @@
         <%--    搜索框--%>
         <div class="d-flex flex-row-reverse bd-highlight row">
             <div class="p-2 bd-highlight">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="form-inline my-2 my-lg-0" action="/sellTicketInfo" method="get">
+                    <input type="hidden" name="method" value="like">
+                    <input class="form-control mr-sm-2" type="search" placeholder="查找乘客" aria-label="Search" name="likeName" value="">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
                 </form>
             </div>
@@ -219,15 +206,35 @@
                                                     <input type="hidden" name="method" value="update"/>
                                                     <div class="form-group">
                                                         <p for="car_id">车牌号:</p>
-                                                        <select name="licensePlate1" id="licensePlate1">
+                                                        <select name="licensePlate1" id="licensePlate1${list.id}">
                                                             <option>请选择车辆</option>
                                                         </select>
                                                     </div>
                                                     <input name="licensePlate" type="hidden" value=""
-                                                           id="licensePlate"/>
+                                                           id="licensePlate" class="licensePlate"/>
                                                     <button type="submit" class="btn btn-primary">提交</button>
                                                 </form>
                                             </div>
+
+                                            <script>
+                                                $(function () {
+                                                    $("#licensePlate1${list.id}").mouseover(function () {
+                                                        $.get("/carType?method=select",
+                                                            function (data, status) {
+                                                                var dataJsion = JSON.parse(data)
+                                                                for (var i = 0; i < dataJsion.length; i++) {
+                                                                    var option = document.createElement("option");
+                                                                    option.innerText = dataJsion[i].licensePlate;
+                                                                    option.value = i;
+                                                                    $("#licensePlate1${list.id}").append(option)
+                                                                }
+                                                            })
+                                                    })
+                                                    $("#licensePlate1${list.id}").change(function () {
+                                                        $(".licensePlate").val($("#licensePlate1${list.id}").find("option:selected").text())
+                                                    })
+                                                })
+                                            </script>
 
                                         </div>
                                         <!-- 模态框主体部分结束 -->
