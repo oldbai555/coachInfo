@@ -66,6 +66,7 @@
         <h1 class="display-4">Neusoft车站管理系统</h1>
         <p class="lead">javaweb项目实战</p>
         <hr class="my-4">
+        <p>指导老师：曾理国</p>
         <p>小组成员：叶秋妤，刘真成，张建军，郭佳顺，陆昌豪</p>
     </div>
     <%--巨幕结束--%>
