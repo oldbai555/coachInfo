@@ -2,8 +2,8 @@ package com.neosoft.dao.impl;
 
 import com.neosoft.dao.ICarInfoDao;
 import com.neosoft.entity.CarInfo;
-import com.neosoft.entity.CarStartTab;
 import com.neosoft.entity.CarType;
+import com.neosoft.entity.Series4;
 import com.neosoft.util.JdbcUtil;
 
 import java.sql.Connection;
@@ -51,15 +51,16 @@ public class CarInfoDaoImpl implements ICarInfoDao {
     }
 
     @Override
-    public List<Double> findPTime() {
-        List<Double> list = new ArrayList<>();
+    public List<Series4> findPTime() {
+        List<Series4> list = new ArrayList<>();
         try {
             connection = JdbcUtil.getConnection();
-            sqlStr = "select probably_time from car_info , car_type where car_id = car_type.id";
+            sqlStr = "select route_start , route_end ,probably_time from car_info , car_type where car_id = car_type.id";
             statement = connection.prepareStatement(sqlStr);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                list.add(resultSet.getDouble(1));
+                String name = resultSet.getString(1)+"-"+resultSet.getString(2);
+                list.add(new Series4(name,resultSet.getDouble(3)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,8 +107,8 @@ public class CarInfoDaoImpl implements ICarInfoDao {
             connection = JdbcUtil.getConnection();
             sqlStr = "select * from car_info , car_type where car_id = car_type.id limit ?,?";
             statement = connection.prepareStatement(sqlStr);
-            statement.setInt(1,index);
-            statement.setInt(2,limit);
+            statement.setInt(1, index);
+            statement.setInt(2, limit);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 carInfo = new CarInfo(resultSet.getInt(1),
@@ -168,11 +169,11 @@ public class CarInfoDaoImpl implements ICarInfoDao {
             connection = JdbcUtil.getConnection();
             String strSql = "insert into car_info(car_id,route_start,route_end,car_start_time,probably_time)VALUE(?,?,?,?,?)";
             statement = connection.prepareStatement(strSql);
-            statement.setInt(1,carInfo.getCarType().getId());
-            statement.setString(2,carInfo.getRouteStart());
-            statement.setString(3,carInfo.getRouteEnd());
-            statement.setString(4,carInfo.getCar_start_time());
-            statement.setDouble(5,carInfo.getProbably_time());
+            statement.setInt(1, carInfo.getCarType().getId());
+            statement.setString(2, carInfo.getRouteStart());
+            statement.setString(3, carInfo.getRouteEnd());
+            statement.setString(4, carInfo.getCar_start_time());
+            statement.setDouble(5, carInfo.getProbably_time());
             return statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -188,12 +189,12 @@ public class CarInfoDaoImpl implements ICarInfoDao {
             connection = JdbcUtil.getConnection();
             String strSql = "update car_info SET car_id = ?,route_start = ?,route_end = ?,car_start_time = ?,probably_time = ? where id = ? ";
             statement = connection.prepareStatement(strSql);
-            statement.setInt(1,carInfo.getCarType().getId());
-            statement.setString(2,carInfo.getRouteStart());
-            statement.setString(3,carInfo.getRouteEnd());
-            statement.setString(4,carInfo.getCar_start_time());
-            statement.setDouble(5,carInfo.getProbably_time());
-            statement.setInt(6,carInfo.getId());
+            statement.setInt(1, carInfo.getCarType().getId());
+            statement.setString(2, carInfo.getRouteStart());
+            statement.setString(3, carInfo.getRouteEnd());
+            statement.setString(4, carInfo.getCar_start_time());
+            statement.setDouble(5, carInfo.getProbably_time());
+            statement.setInt(6, carInfo.getId());
             return statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -209,7 +210,7 @@ public class CarInfoDaoImpl implements ICarInfoDao {
             connection = JdbcUtil.getConnection();
             String strSql = "delete from car_info where id = ?";
             statement = connection.prepareStatement(strSql);
-            statement.setInt(1,id);
+            statement.setInt(1, id);
             return statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

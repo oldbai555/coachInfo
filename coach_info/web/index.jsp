@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="shortcut icon" href="img/favicon.ico" >
     <title>首页</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="./css/main.css"/>
@@ -32,23 +33,16 @@
     </style>
     <script language="JavaScript">
         var zzz = [];
+        var obj4 = null;
+        var obj3 = null;
         $(document).ready(function() {
-
-            window.onload = function () {
-                $.get("/countNum?method=zhexian",function (data,status) {
-                    zzz = JSON.parse(data)
-                    // this.zzz = [16, 15, 25, 45, 45, 45, 35, 20, 5, 35, 35, 15, 25, 45, 45, 48]
-                    // console.log(this.zzz[0])
-                    // console.log()
-                })
-            }
             var chart1 = {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
                 plotShadow: false
             };
             var title1 = {
-                text: '2021年01月04日<br>各类车票剩余票数总占比'
+                text: '各类车票剩余票数总占比'
             };
             var tooltip1 = {
                 pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -199,7 +193,7 @@
             var tooltip3 = {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y:.1f} 人次</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -215,14 +209,14 @@
             };
 
             var series3 = [{
-                name: 'car_id',
-                data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                name: '车型',
+                data: []
             }, {
-                name: 'people_num',
-                data: [20, 20, 30, 50, 50, 50, 35, 30, 5, 51, 60, 18, 25, 50, 50, 50]
+                name: '最大乘坐量',
+                data: []
             }, {
-                name: 'actual_num',
-                data: [16, 15, 25, 45, 45, 45, 35, 20, 5, 35, 35, 15, 25, 45, 45, 48]
+                name: '实际乘坐量',
+                data: []
             }];
 
             var json3 = {};
@@ -235,15 +229,40 @@
             json3.series = series3;
             json3.plotOptions = plotOptions3;
             json3.credits = credits3;
-            $('#container3').highcharts(json3);
+            obj3 = Highcharts.chart('container3',json3)
+            //ajax start
+            function requestData1(){
+                $.ajax({
+                    url: '/countNum?method=zhuxing',
+                    success: function(point) {
+                        var data = JSON.parse(point)
+                        var arr_x = []
+                        var arr_y = []
+                        var arr_z = []
+                        for (var i = 0 ; i < data.length ; i++){
+                            // console.log(data[i])
+                            arr_x[i] = data[i].ticketInfoId
+                            arr_y[i] = data[i].ticketNum
+                            arr_z[i] = data[i].ticketSum
+                        }
+                        obj3.series[0].setData(arr_x)
+                        obj3.series[1].setData(arr_y)
+                        obj3.series[2].setData(arr_z)
+                        // 一秒后继续调用本函数
+                        setTimeout(requestData1, 10000);
+                    },
+                    cache: false
+                });
+            }
+            requestData1();
+            //ajax end
 
-            $('#container4').highcharts({
+            obj4 = Highcharts.chart('container4',{
                 chart: {
                     type: 'line'
                 },
                 xAxis: {
-                    categories: ['柳州-来宾', '柳州-南宁', '柳州-宾阳', '柳州-桂林', '柳州-惠州', '柳州-广州', '柳州-深圳', '柳州-佛山', '柳州-湛江', '柳州-北海', '柳州-徐州', '柳州-钦州', '柳州-西藏', '柳州-新疆', '柳州-北京', '柳州-重庆']
-
+                    categories: []
                 },
 
                 yAxis: {
@@ -257,14 +276,38 @@
                     }
                 },
                 title: {
-                    text: '2021年01月04日<br>各行车路线预计行驶时间'
+                    text: '各行车路线预计行驶时间'
                 },
                 series: [{
-                    data: [2.0, 2.5, 2.5, 2.0, 8.0, 9.0, 8.5, 8.0, 9.0, 10.0, 20.0, 5.0, 9.5, 15.5, 16.0]
-                    // data : this.zzz
+                    data : []
                 }]
 
             });
+
+            /**
+             * ajax
+             */
+            function requestData(){
+                $.ajax({
+                    url: '/countNum?method=zhexian',
+                    success: function(point) {
+                        var data = JSON.parse(point)
+                        var arr_x = []
+                        var arr_y = []
+                        for (var i = 0 ; i < data.length ; i++){
+                            // console.log(data[i])
+                            arr_x[i] = data[i].name
+                            arr_y[i] = data[i].num
+                        }
+                        obj4.xAxis[0].setCategories(arr_x)
+                        obj4.series[0].setData(arr_y)
+                        // 一秒后继续调用本函数
+                        setTimeout(requestData, 10000);
+                    },
+                    cache: false
+                });
+            }
+            requestData();
             // the button action
             $('#button').click(function() {
                 var chart = $('#container').highcharts(),
@@ -300,7 +343,7 @@
         <p>小组成员：叶秋妤，刘真成，张建军，郭佳顺，陆昌豪</p>
     </div>
 
-    <div class="container">
+    <div class="container mb-5">
         <%-- 导航栏--%>
         <div class="row bg-light rounded">
             <div class="col-sm-12">
@@ -339,7 +382,7 @@
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link disabled" href="#">尊敬的xxx用户 <span
+                                <a class="nav-link disabled" href="#">尊敬的${admin.username}用户<span
                                         class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item ">
@@ -357,16 +400,16 @@
         <%--        数据报表--%>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6">
-                <div id="container1" class="row" style="width: 550px; height: 400px; margin: 0 auto"></div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-6">
-                <div id="container2" class="row" style="width: 600px; height: 550px; margin: 0 auto"></div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-6">
                 <div id="container3" class="row" style="width: 600px;height:400px;margin: 0 auto"></div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6">
                 <div id="container4" class="row" style="width: 600px;height:400px;margin: 0 auto"></div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <div id="container1" class="row" style="width: 550px; height: 400px; margin: 0 auto"></div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <div id="container2" class="row" style="width: 600px; height: 550px; margin: 0 auto"></div>
             </div>
 
 
@@ -374,6 +417,9 @@
 
         </div>
 
+    </div>
+    <div class="fixed-bottom text-dark bg-light">桂公网安备
+        000000000001号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>网站浏览量：${applicationScope.countPeo}次</span>
     </div>
 
 </div>

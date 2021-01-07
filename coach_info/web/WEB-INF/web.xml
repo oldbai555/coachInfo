@@ -21,6 +21,7 @@
         <url-pattern>/sellTicketInfo</url-pattern>
         <url-pattern>/sellTicketInfo.jsp</url-pattern>
         <url-pattern>/index.jsp</url-pattern>
+        <url-pattern>/countNum</url-pattern>
     </filter-mapping>
 
     <servlet>

@@ -1,7 +1,7 @@
 package com.neosoft.dao;
 
 import com.neosoft.entity.CarInfo;
-import com.neosoft.entity.CarStartTab;
+import com.neosoft.entity.Series4;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public interface ICarInfoDao {
      */
     CarInfo findById(int id);
 
-    List<Double> findPTime();
+    List<Series4> findPTime();
 
     /**
      * 通过 汽车型号 也就是 car_type表的id查询

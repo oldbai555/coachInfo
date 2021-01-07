@@ -10,6 +10,7 @@
     <title></title>
     <link type="text/css" rel="stylesheet" href="./css/style.css"/>
     <script type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+    <link rel="shortcut icon" href="img/favicon.ico" >
     <script type="text/javascript">
         $(document).ready(function () {
             var height = $(document).height();

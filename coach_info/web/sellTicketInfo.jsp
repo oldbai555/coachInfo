@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="shortcut icon" href="img/favicon.ico" >
     <title>购票记录表</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="./css/main.css"/>
