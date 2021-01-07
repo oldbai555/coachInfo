@@ -10,7 +10,7 @@
 <html>
 <head>
     <link rel="shortcut icon" href="img/favicon.ico" >
-    <title>车票页(已售多少还剩多少)</title>
+    <title>车票页</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="./css/main.css"/>
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>

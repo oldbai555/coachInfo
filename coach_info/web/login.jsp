@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Neusoft车站管理系统</title>
     <title></title>
     <link type="text/css" rel="stylesheet" href="./css/style.css"/>
     <script type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
@@ -24,7 +24,11 @@
 
 <body>
 <div class="loginBox">
-    <h1>欢迎登陆</h1>
+    <h1>
+        Neusoft车站管理系统<br>
+        欢迎登陆
+    </h1>
+
     <div class="item">
         <div class="icon"><img src="img/icon1.png"/></div>
         <div class="txt"><input name="name" id="name" type="text" placeholder="请输入您的用户名" value="admin"/></div>
