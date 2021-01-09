@@ -25,7 +25,7 @@
 <body>
 <div class="loginBox">
     <h1>
-        Neusoft车站管理系统<br>
+        Neusoft&启迪-车站管理系统<br>
         欢迎登陆
     </h1>
 

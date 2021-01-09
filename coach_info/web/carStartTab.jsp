@@ -89,13 +89,15 @@
 <div class=" .container-fluid">
     <%--巨幕开始--%>
     <div class="jumbotron carbg">
-        <h1 class="display-4">Neusoft车站管理系统</h1>
+        <h1 class="display-4">Neusoft&启迪-车站管理系统</h1>
         <p class="lead">javaweb项目实战</p>
         <hr class="my-4">
         <p>指导老师：曾理国</p>
         <p>小组成员：叶秋妤，刘真成，张建军，郭佳顺，陆昌豪</p>
     </div>
     <%--巨幕结束--%>
+        <marquee direction="left" behavior="scroll" scrollamount="100px" scrolldelay="1000">安全出行，谨慎驾驶！您的鼓励是对我们最好的支持！！！</marquee>
+
     <%--主体开始--%>
     <div class="container mb-5">
         <%--首页开始--%>
