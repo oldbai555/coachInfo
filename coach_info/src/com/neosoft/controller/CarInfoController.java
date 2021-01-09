@@ -122,7 +122,7 @@ public class CarInfoController extends HttpServlet {
                 int update = dao.update(carTypeUpdate);
                 //车种信息添加成功后获取该车种的 id
                 if (update == 0) {
-                    resp.getWriter().write("NO");
+                    resp.sendRedirect("/carType?page=1");
                 } else {
                     CarType carType1 = dao.findByCard(carTypeUpdate.getLicensePlate());
                     //把car_info的信息完善
