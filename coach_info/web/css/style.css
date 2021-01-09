@@ -31,10 +31,9 @@ body {
     min-width: 1200px;
     color: #333;
     font-size: 14px;
-    background-repeat: no-repeat;
-    background-image: url(../img/bg6.jpg);
+    background: url(../img/bg1.png) no-repeat;
     background-size: 100% 100%;
-    overflow: hidden
+    overflow: hidden;
 }
 
 a:hover {
@@ -44,7 +43,9 @@ a:hover {
 .loginBox {
     width: 520px;
     height: 500px;
-    background: url(../img/bg5.jpg) no-repeat;
+    /*background: url(../img/bg1.png) no-repeat;*/
+    filter: Alpha(opacity=50);
+    z-index: -1;
     background-size: 100% 100%;
     margin: 0 auto;
     overflow: hidden
@@ -64,10 +65,12 @@ a:hover {
     width: 300px;
     height: 45px;
     margin-left: 105px;
-    border: 1px solid #1d90c5;
+    border: 1px solid#1be6e6;
     margin-bottom: 10px;
-    background: rgb(7, 32, 61);
-    display: flex
+    background: #fff;
+    display: flex;
+    filter: Alpha(opacity=50);
+    z-index: -1;
 }
 
 .loginBox .item .icon {
@@ -77,8 +80,10 @@ a:hover {
 
 .loginBox .item .icon img {
     display: block;
-    width: 20px;
-    margin: 12px;
+    width: auto;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .loginBox .item .txt {
@@ -87,14 +92,14 @@ a:hover {
 
 .loginBox .item .txt input {
     border: 0;
-    background: none;
+    background: #97c4f7;
     outline: none;
     width: 100%;
     height: 45px;
     line-height: 45px;
     color: #fff;
     letter-spacing: 1px;
-    font-size: 14px
+    font-size: 14px;
 }
 
 .loginBox .item .yzm {
@@ -164,7 +169,7 @@ input::-webkit-input-placeholder {
 .loginBox .item_3 .btn {
     width: 300px;
     height: 45px;
-    background: rgb(7, 32, 61);
+    background: #97c4f7;
     border: 0;
     outline: none;
     text-align: center;
@@ -173,9 +178,9 @@ input::-webkit-input-placeholder {
     letter-spacing: 2px;
     font-size: 16px;
     font-weight: bold;
-    border: 1px solid #1d90c5;
+    border: 1px solid #71bfec;
     margin-bottom: 10px;
-    cursor: pointer
+    cursor: pointer;
 }
 
 input[type=checkbox] {
@@ -193,8 +198,8 @@ input[type=checkbox]:after {
     height: 13px;
     top: 0;
     content: " ";
-    background: rgb(7, 32, 61);
-    border: 1px solid #1d90c5;
+    background: #97c4f7;
+    border: 1px solid#1be6e6;
     color: #fff;
     display: inline-block;
     visibility: visible;
@@ -218,7 +223,7 @@ input[type=checkbox]:checked:after {
 }
 
 .loginBox .item_4 a {
-    color: #1d90c5;
+    color: #97c4f7;
     font-size: 12px;
     font-weight: bold;
     padding-left: 3px

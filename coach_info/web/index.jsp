@@ -14,8 +14,8 @@
     <title>首页</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="./css/main.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
     <script src="./js/jquery-3.4.1.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/bootstrap.bundle.js" type="text/javascript" charset="utf-8"></script>
@@ -24,8 +24,14 @@
     <script src="http://code.highcharts.com/modules/treemap.js"></script>
     <script src="http://code.highcharts.com/modules/heatmap.js"></script>
     <style type="text/css">
+        /*.carbg {*/
+        /*    background-image: url(./img/bg1.jpg);*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-size: cover;*/
+        /*    color: #000000;*/
+        /*}*/
         .carbg {
-            background-image: url(./img/bg1.jpg);
+            background-image: url(./img/bg2.png);
             background-repeat: no-repeat;
             background-size: cover;
             color: black;
@@ -350,7 +356,7 @@
             <div class="col-sm-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-                    <a class="navbar-brand disabled" href="index.jsp">Neusoft车站管理系统</a>
+                    <a class="navbar-brand disabled" href="index.jsp"> <span class="badge badge-secondary"><img src="img/yzm.jpg" width="240px" height="55px"></span></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
